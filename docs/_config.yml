@@ -23,7 +23,7 @@ email: your-email@example.com
 description: >- # this means to ignore newlines until "baseurl:"
   This site is where I host all of my data science portfolio projects and blog posts. Most of the content here is produced using jupyter notebooks and jekyll.
 domain: benjamin-j-cooper.github.io 
-url: "https://benjamin-j-cooper.github.io " # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://benjamin-j-cooper.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 baseurl: "/docs/" # the subpath of your site, e.g. /blog
 twitter_username: ""
 github_username:  benjamin-j-cooper
