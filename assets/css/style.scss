@@ -1,9 +1,10 @@
 ---
 ---
+
+@import "{{ site.theme }}";
 .page-header {
     color: #fff;
     text-align: center;
     background-color: #15967d;
     background-image: #6c757d;
 }
-@import "{{ site.theme }}";
