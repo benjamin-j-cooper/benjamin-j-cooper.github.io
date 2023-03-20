@@ -1371,7 +1371,7 @@ some of the data is in provincial format, some is single value for the country
     </tr>
   </tbody>
 </table>
-</div>z-index: 1;
+</div>
 
 
 
