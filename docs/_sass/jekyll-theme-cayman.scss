@@ -111,15 +111,15 @@ a {
   background-color: #16a085;
 
   @include large {
-    padding: 5rem 6rem;
+    padding: 12rem 6rem;
   }
 
   @include medium {
-    padding: 3rem 4rem;
+    padding: 6rem 4rem;
   }
 
   @include small {
-    padding: 2rem 1rem;
+    padding: 4rem 1rem;
   }
 }
 
@@ -407,7 +407,8 @@ a {
   color: var(--white);
   font-size: 60px;
   margin-left: 10px;
-  float: left;
+  margin-left: 50px;
+  margin-top: 5px;
 }
 /* Menu Icon */
 .hamb{
