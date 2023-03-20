@@ -435,8 +435,8 @@ a {
 }
 }
 
-@include small {
-  .nav ul {
+@media screen and (max-width: #{$large-breakpoint}) {
+  .nav {
     width: 100%;
     height: 100%;
     background-color: #253544;
@@ -446,14 +446,8 @@ a {
     z-index: 1;
     margin: 0;
   }
-  
-  .nav li {
-    float: left;
-    list-style: none;
-    margin: 20px 25px;
-  }
 
-  .nav a {
+  .menu a {
     color: #fff;
     font-size: 100%;
     font-weight: bold;
@@ -461,11 +455,11 @@ a {
     display: block;
     padding: 30px;
   }
-  .nav a:hover{
+  .menu a:hover{
       color: #16a085;
 
   }
-  .nav ul{
+  .nav {
     max-height: 0;
     transition: max-height .5s ease-out;
   }
@@ -529,3 +523,4 @@ a {
     top:0;
   }
 }
+
