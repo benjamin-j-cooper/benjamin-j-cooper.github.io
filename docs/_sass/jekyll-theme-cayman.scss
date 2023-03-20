@@ -430,6 +430,9 @@ a {
   .hamb{
       display: none;
   }
+  .side-menu{
+    display: none;
+}
 }
 
 @include small {
@@ -455,14 +458,15 @@ a {
     font-size: 100%;
     font-weight: bold;
     text-decoration: none;
+    display: block;
+    padding: 30px;
   }
   .nav a:hover{
-      background-color: transparent;
-      color: var(--gray);
+      color: #16a085;
 
   }
   .nav ul{
-    max-height: 50%;
+    max-height: 0;
     transition: max-height .5s ease-out;
   }
   /* Logo */
