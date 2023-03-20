@@ -109,10 +109,9 @@ a {
   color: #fff;
   text-align: center;
   background-color: #16a085;
-  padding-top: 70px;
 
   @include large {
-    padding: 5rem 6rem;
+    padding: 10rem 6rem;
   }
 
   @include medium {
