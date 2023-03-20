@@ -1238,37 +1238,37 @@ some of the data is in provincial format, some is single value for the country
 
 
     
-![png](Covid19_analysis_files/Covid19_analysis_33_0.png)
+![png](assets/images/tsa_files/Covid19_analysis_33_0.png)
     
 
 
 
     
-![png](Covid19_analysis_files/Covid19_analysis_34_0.png)
+![png](assets/images/tsa_files/Covid19_analysis_34_0.png)
     
 
 
 
     
-![png](Covid19_analysis_files/Covid19_analysis_35_0.png)
+![png](assets/images/tsa_files/Covid19_analysis_35_0.png)
     
 
 
 
     
-![png](Covid19_analysis_files/Covid19_analysis_36_0.png)
+![png](assets/images/tsa_files/Covid19_analysis_36_0.png)
     
 
 
 
     
-![png](Covid19_analysis_files/Covid19_analysis_37_0.png)
+![png](assets/images/tsa_files/Covid19_analysis_37_0.png)
     
 
 
 
     
-![png](Covid19_analysis_files/Covid19_analysis_40_0.png)
+![png](assets/images/tsa_files/Covid19_analysis_40_0.png)
     
 
 
@@ -1281,7 +1281,7 @@ some of the data is in provincial format, some is single value for the country
 
 
     
-![png](Covid19_analysis_files/Covid19_analysis_41_1.png)
+![png](assets/images/tsa_files/Covid19_analysis_41_1.png)
     
 
 
@@ -1303,7 +1303,7 @@ some of the data is in provincial format, some is single value for the country
 
 
     
-![png](Covid19_analysis_files/Covid19_analysis_45_1.png)
+![png](assets/images/tsa_files/Covid19_analysis_45_1.png)
     
 
 
@@ -1387,7 +1387,7 @@ Lets check the trend in the US Covid death rate by plotting number of deaths ove
 
 
     
-![png](Covid19_analysis_files/Covid19_analysis_52_0.png)
+![png](assets/images/tsa_files/Covid19_analysis_52_0.png)
     
 
 
