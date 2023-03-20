@@ -468,7 +468,7 @@ a {
     width: 100%;
     background-color: #253544;
     display: flex;
-    justify-content: center;
+    /*justify-content: center;*/
     position: fixed;
     flex-wrap: wrap;
      /*!
@@ -486,6 +486,7 @@ a {
     list-style: none;
   }
   .menu li{
+    list-style: none;
     float: left;
   }
   .menu a {
@@ -521,7 +522,7 @@ a {
     overflow: hidden;
     */
 
-    width: 100%;
+    width: fit-content;
     height: 100%;
     position: fixed;
     background-color: #253544;
