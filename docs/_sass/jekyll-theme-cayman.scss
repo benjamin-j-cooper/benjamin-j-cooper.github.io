@@ -393,32 +393,107 @@ a {
   max-width: 100%;
   height: auto;
 }
+/* Header */
+.nav-header{
+  background-color: #253544;
+  box-shadow: 1px 1px 5px 0px var(--gray);
+  position: sticky;
+  top: 0;
+  width: 100%;
+}
+/* Logo */
+.logo{
+  display: inline-block;
+  color: var(--white);
+  font-size: 60px;
+  margin-left: 10px;
+}
+/* Menu Icon */
+.hamb{
+  cursor: pointer;
+  float: right;
+  padding: 40px 20px;
+}/* Style label tag */
 
+.hamb-line {
+  background: var(--white);
+  display: block;
+  height: 2px;
+  position: relative;
+  width: 24px;
+
+} /* Style span tag */
+
+.hamb-line::before,
+.hamb-line::after{
+  background: var(--white);
+  content: '';
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all .2s ease-out;
+  width: 100%;
+}
+.hamb-line::before{
+  top: 5px;
+}
+.hamb-line::after{
+  top: -5px;
+}
+
+.side-menu {
+  display: none;
+} /* Hide checkbox */
+
+/* Toggle menu icon */
+.side-menu:checked ~ nav{
+  max-height: 100%;
+}
+.side-menu:checked ~ .hamb .hamb-line {
+  background: transparent;
+}
+.side-menu:checked ~ .hamb .hamb-line::before {
+  transform: rotate(-45deg);
+  top:0;
+}
+.side-menu:checked ~ .hamb .hamb-line::after {
+  transform: rotate(45deg);
+  top:0;
+}
 /* Responsiveness */
 @include large {
-  .nav ul {
+  .nav {
+    /*!
     width: 100%;
     background-color: #253544;
     display: flex;
     justify-content: center;
     position: fixed;
     flex-wrap: wrap;
+    */
+    max-height: none;
+    top: 0;
+    position: relative;
+    float: right;
+    width: fit-content;
+    background-color: transparent;
+
     z-index: 1;
     margin: 0;
   }
-  
-  .nav li {
-    list-style: none;
-    margin: 20px 25px;
-  }
 
-  .nav a {
+  .menu li{
+    float: left;
+
+  .menu a {
     color: #fff;
     font-size: 100%;
     font-weight: bold;
     text-decoration: none;
+    display: block;
+    padding: 30px;
   }
-  .nav a:hover{
+  .menu a:hover{
       background-color: transparent;
       color: #16a085;
 
@@ -437,12 +512,21 @@ a {
 
 @media screen and (max-width: #{$large-breakpoint}) {
   .nav {
+    /*!
     width: 100%;
     height: 100%;
     background-color: #253544;
     float: right;
     position: fixed;
     overflow: hidden;
+    */
+
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: #253544;
+    overflow: hidden;
+
     z-index: 1;
     margin: 0;
   }
@@ -463,64 +547,6 @@ a {
     max-height: 0;
     transition: max-height .5s ease-out;
   }
-  /* Logo */
-  .logo{
-    display: inline-block;
-    color: var(--white);
-    font-size: 60px;
-    margin-left: 10px;
-  }
-  /* Menu Icon */
-  .hamb{
-    cursor: pointer;
-    float: right;
-    padding: 40px 20px;
-  }/* Style label tag */
-
-  .hamb-line {
-    background: var(--white);
-    display: block;
-    height: 2px;
-    position: relative;
-    width: 24px;
-
-  } /* Style span tag */
-
-  .hamb-line::before,
-  .hamb-line::after{
-    background: var(--white);
-    content: '';
-    display: block;
-    height: 100%;
-    position: absolute;
-    transition: all .2s ease-out;
-    width: 100%;
-  }
-  .hamb-line::before{
-    top: 5px;
-  }
-  .hamb-line::after{
-    top: -5px;
-  }
-
-  .side-menu {
-    display: none;
-  } /* Hide checkbox */
-
-  /* Toggle menu icon */
-  .side-menu:checked ~ nav{
-    max-height: 100%;
-  }
-  .side-menu:checked ~ .hamb .hamb-line {
-    background: transparent;
-  }
-  .side-menu:checked ~ .hamb .hamb-line::before {
-    transform: rotate(-45deg);
-    top:0;
-  }
-  .side-menu:checked ~ .hamb .hamb-line::after {
-    transform: rotate(45deg);
-    top:0;
-  }
+  
 }
 
