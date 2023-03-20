@@ -109,7 +109,7 @@ a {
   color: #fff;
   text-align: center;
   background-color: #16a085;
-  padding-top: 5rem;
+  padding-top: 70px;
 
   @include large {
     padding: 5rem 6rem;
@@ -408,6 +408,7 @@ a {
   color: var(--white);
   font-size: 60px;
   margin-left: 10px;
+  float: left;
 }
 /* Menu Icon */
 .hamb{
@@ -487,7 +488,7 @@ a {
   }
   .menu li{
     list-style: none;
-    float: left;
+    float: right;
   }
   .menu a {
     color: #fff;
@@ -526,7 +527,7 @@ a {
     height: 100%;
     position: fixed;
     background-color: #253544;
-    overflow: visible;
+    overflow: hidden;
 
     z-index: 1;
     margin: 0;
