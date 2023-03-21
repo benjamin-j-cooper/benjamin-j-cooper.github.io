@@ -14,10 +14,12 @@
 
     .dataframe tbody tr th {
         vertical-align: top;
+        position: relative;
     }
 
     .dataframe thead th {
         text-align: right;
+        position: relative;
     }
 </style>
 <table border="1" class="dataframe">
@@ -198,10 +200,12 @@ Each column is a country, but we can see by scrolling over that not all of them 
 
     .dataframe tbody tr th {
         vertical-align: top;
+        position: relative;
     }
 
     .dataframe thead th {
         text-align: right;
+        position: relative;
     }
 </style>
 <table border="1" class="dataframe">
