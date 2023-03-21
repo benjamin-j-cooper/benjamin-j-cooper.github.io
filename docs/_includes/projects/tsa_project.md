@@ -7,9 +7,9 @@
 
 
 <div>
-<table border="1" class="position: relative; z-index: 0;">
+<table border="1" class="overflow-x: hidden; position: relative; z-index: 0;">
   <thead>
-    <tr style="text-align: right;">
+    <tr style="text-align: right; overflow-x: hidden;">
       <th></th>
       <th>Country/Region</th>
       <th>Province/State</th>
@@ -325,6 +325,7 @@ Each column is a country, but we can see by scrolling over that not all of them 
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
+        overflow-x: hidden;
     }
 
     .dataframe tbody tr th {
