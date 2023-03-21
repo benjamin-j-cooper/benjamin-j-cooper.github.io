@@ -171,7 +171,7 @@
   </tbody>
 </table>
 <p>5 rows × 1125 columns</p>
-</div>z-index: 0;
+</div>
 
 
 
@@ -343,7 +343,7 @@ Each column is a country, but we can see by scrolling over that not all of them 
   </tbody>
 </table>
 <p>198 rows × 8 columns</p>
-</div>z-index: 0;
+</div>
 
 
 
@@ -431,7 +431,7 @@ Each column is a country, but we can see by scrolling over that not all of them 
   </tbody>
 </table>
 <p>1125 rows × 2 columns</p>
-</div>z-index: 0;
+</div>
 
 
 
@@ -463,7 +463,6 @@ some of the data is in provincial format, some is single value for the country
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
-        z-index: 0;
     }
 
     .dataframe tbody tr th {
@@ -662,7 +661,6 @@ some of the data is in provincial format, some is single value for the country
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
-        z-index: 0;
     }
 
     .dataframe tbody tr th {
@@ -835,7 +833,6 @@ some of the data is in provincial format, some is single value for the country
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
-        z-index: 0;
     }
 
     .dataframe tbody tr th {
@@ -1010,7 +1007,6 @@ some of the data is in provincial format, some is single value for the country
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
-        z-index: 0;
     }
 
     .dataframe tbody tr th {
@@ -1183,7 +1179,6 @@ some of the data is in provincial format, some is single value for the country
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
-        z-index: 0;
     }
 
     .dataframe tbody tr th {
