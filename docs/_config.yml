@@ -39,8 +39,7 @@ url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  benjamin-j-cooper
 show_downloads: false
 google_analytics:
-kramdown:
-  input: Kramdown
+markdown: GFM
 # Build settings
 theme: jekyll-theme-cayman
 plugins:
