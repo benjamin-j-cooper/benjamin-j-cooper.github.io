@@ -118,15 +118,15 @@ a {
   background-color: #16a085;
 
   @include large {
-    padding: 10rem 6rem 6rem;
+    padding: 8rem 6rem 6rem;
   }
 
   @include medium {
-    padding: 6rem 4rem 4rem;
+    padding: 4rem 4rem 4rem;
   }
 
   @include small {
-    padding: 4rem 1rem 2rem;
+    padding: 2rem 1rem 2rem;
   }
 }
 
