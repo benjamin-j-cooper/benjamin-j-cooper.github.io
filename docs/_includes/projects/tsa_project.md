@@ -10,17 +10,17 @@
 <style scoped>
     .dataframe tbody tr th:only-of-type {
         vertical-align: middle;
+        transform: translate3d(0,0,0);
     }
 
     .dataframe tbody tr th {
         vertical-align: top;
-        position: static;
-        z-index: 0;
+        transform: translate3d(0,0,0);
     }
 
     .dataframe thead th {
         text-align: right;
-        position: static;
+        transform: translate3d(0,0,0);
     }
 </style>
 <table border="1" class="dataframe">
@@ -201,12 +201,10 @@ Each column is a country, but we can see by scrolling over that not all of them 
 
     .dataframe tbody tr th {
         vertical-align: top;
-        position: static;
     }
 
     .dataframe thead th {
         text-align: right;
-        position: static;
     }
 </style>
 <table border="1" class="dataframe">
