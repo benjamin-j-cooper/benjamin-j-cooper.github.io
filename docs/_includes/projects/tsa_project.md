@@ -7,7 +7,7 @@
 
 
 <div>
-<table border="1" class="dataframe">
+<table border="1" class="position: relative; z-index: 0;">
   <thead>
     <tr style="text-align: right;">
       <th></th>
