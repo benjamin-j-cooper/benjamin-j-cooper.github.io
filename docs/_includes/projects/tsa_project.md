@@ -177,21 +177,7 @@ Each column is a country, but we can see by scrolling over that not all of them 
 
 
 
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
+<table border="1" >
   <thead>
     <tr style="text-align: right;">
       <th></th>
@@ -329,8 +315,6 @@ Each column is a country, but we can see by scrolling over that not all of them 
     </tr>
   </tbody>
 </table>
-<p>198 rows × 8 columns</p>
-</div>
 
 
 
