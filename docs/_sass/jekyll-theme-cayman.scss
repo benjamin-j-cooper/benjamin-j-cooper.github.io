@@ -218,6 +218,7 @@ a {
     margin-bottom: 1rem;
     font-weight: normal;
     color: $section-headings-color;
+    z-index: 1;
   }
 
   p {
@@ -477,7 +478,7 @@ a {
     flex-wrap: wrap;
     top: 0;
      /*!
-     
+
     background-color: #253544;
     max-height: none;
     top: 0;
