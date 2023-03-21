@@ -7,5 +7,5 @@ description: this is an example of rendering a jupyter notebook as markdown on t
 
 {% include projects/tsa_project.md %}
 
-</div>z-index: 999;
+</div>z-index: 0;
 [Top of Page](#page-top)
