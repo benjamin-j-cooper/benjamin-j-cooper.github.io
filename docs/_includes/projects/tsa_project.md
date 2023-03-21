@@ -15,6 +15,7 @@
     .dataframe tbody tr th {
         vertical-align: top;
         position: static;
+        z-index: 0;
     }
 
     .dataframe thead th {
