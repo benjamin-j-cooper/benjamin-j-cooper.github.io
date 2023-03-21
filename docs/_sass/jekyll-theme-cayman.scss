@@ -3,6 +3,10 @@
 @import "variables";
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
 
+/*
+     Mixins
+     ========================================================================== */
+
 @mixin large {
   @media screen and (min-width: #{$large-breakpoint}) {
     @content;
@@ -24,6 +28,9 @@
 * {
   box-sizing: border-box;
 }
+/*
+     Main Cayman settings
+     ========================================================================== */
 
 body {
   padding: 0;
@@ -377,9 +384,9 @@ a {
   color: $blockquote-text-color;
 }
 
-/*!
-* This is where the css starts for the custom navbar
- */
+/*
+     Navigation
+     ========================================================================== */
 
 /* Nav menu */
 .text-uppercase {
@@ -390,6 +397,7 @@ a {
   width: 10rem;
   margin-top: 1rem;
 }
+/* header image or logo control */
 .img-fluid {
   max-width: 100%;
   height: auto;
@@ -409,13 +417,12 @@ a {
   font-size: 60px;
   margin-left: 10px;
 }
-/* Menu Icon */
+/* Menu hamburger Icon */
 .hamb{
   cursor: pointer;
   float: right;
   padding: 40px 20px;
-}/* Style label tag */
-
+}
 .hamb-line {
   background: #fff;
   display: block;
@@ -423,8 +430,7 @@ a {
   position: relative;
   width: 24px;
 
-} /* Style span tag */
-
+}
 .hamb-line::before,
 .hamb-line::after{
   background: #fff;
@@ -441,11 +447,10 @@ a {
 .hamb-line::after{
   top: -5px;
 }
-
+/* Hide checkbox */
 .side-menu {
   display: none;
-} /* Hide checkbox */
-
+} 
 /* Toggle menu icon */
 .side-menu:checked ~ nav{
   max-height: 100%;
@@ -528,7 +533,7 @@ a {
 
     width: 100%;
     height: 100%;
-    position: fixed;
+    position: relative;
     background-color: #253544;
     overflow: hidden;
 
