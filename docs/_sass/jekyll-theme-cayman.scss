@@ -230,7 +230,6 @@ a {
     color: $code-text-color;
     background-color: $code-bg-color;
     border-radius: 0.3rem;
-    overflow-x: hidden;
   }
 
   pre {
@@ -253,7 +252,6 @@ a {
       white-space: pre;
       background: transparent;
       border: 0;
-      overflow-x: hidden;
     }
   }
 
@@ -317,8 +315,6 @@ a {
   table {
     display: block;
     width: 100%;
-    overflow-x: hidden;
-    /*overflow: auto;*/
     word-break: normal;
     word-break: keep-all; // For Firefox to horizontally scroll wider tables.
     -webkit-overflow-scrolling: touch;
@@ -356,6 +352,45 @@ a {
     margin: 1rem 0;
     background-color: $hr-border-color;
     border: 0;
+  }
+  @include large {
+    table {
+      overflow: auto;
+    }
+    .highlight pre,
+    pre {
+      overflow: auto;
+    }
+    pre code,
+    pre tt {
+      overflow: initial;
+    }
+  }
+  @include medium {
+    table {
+      overflow-x: hidden;
+    }
+    .highlight pre,
+    pre {
+      overflow-x: hidden;
+    }
+    pre code,
+    pre tt {
+      overflow-x: hidden;
+    }
+  }
+  @include small {
+    table {
+      overflow-x: hidden;
+    }
+    .highlight pre,
+    pre {
+      overflow-x: hidden;
+    }
+    pre code,
+    pre tt {
+      overflow-x: hidden;
+    }
   }
 }
 
