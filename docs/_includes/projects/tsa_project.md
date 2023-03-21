@@ -7,22 +7,6 @@
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-        transform: translate3d(0,0,0);
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-        transform: translate3d(0,0,0);
-    }
-
-    .dataframe thead th {
-        text-align: right;
-        transform: translate3d(0,0,0);
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
