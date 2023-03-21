@@ -471,12 +471,13 @@ a {
 @include large {
   .nav {
     width: 100%;
+    display: flex;
     justify-content: center;
     position: fixed;
     flex-wrap: wrap;
     top: 0;
      /*!
-    display: flex;
+     
     background-color: #253544;
     max-height: none;
     top: 0;
