@@ -6,4 +6,6 @@ description: this is an example of rendering a jupyter notebook as markdown on t
 
 {% include projects/tsa_project.md %}
 
-[Top of Page](#page-top)
+<div>
+    <a href="#page-top" class="btn">Top of Page</a>
+</div>

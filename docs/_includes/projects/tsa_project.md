@@ -174,239 +174,7 @@ Each column is a country, but we can see by scrolling over that not all of them 
 --1124 rows, each row is covid deaths reported for a country.  
 --1121 of the columns are int64, so the death data is numeric, no need to convert it
 
-
-
-
-<table border="1" >
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>count</th>
-      <th>mean</th>
-      <th>std</th>
-      <th>min</th>
-      <th>25%</th>
-      <th>50%</th>
-      <th>75%</th>
-      <th>max</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Afghanistan</th>
-      <td>1120.0</td>
-      <td>7.050000</td>
-      <td>15.765575</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>6.0</td>
-      <td>159.0</td>
-    </tr>
-    <tr>
-      <th>Albania</th>
-      <td>1120.0</td>
-      <td>3.210714</td>
-      <td>4.491106</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>1.0</td>
-      <td>5.0</td>
-      <td>21.0</td>
-    </tr>
-    <tr>
-      <th>Algeria</th>
-      <td>1120.0</td>
-      <td>6.143750</td>
-      <td>7.482828</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>4.0</td>
-      <td>9.0</td>
-      <td>49.0</td>
-    </tr>
-    <tr>
-      <th>Andorra</th>
-      <td>1120.0</td>
-      <td>0.147321</td>
-      <td>0.537006</td>
-      <td>-2.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>7.0</td>
-    </tr>
-    <tr>
-      <th>Angola</th>
-      <td>1120.0</td>
-      <td>1.724107</td>
-      <td>3.068149</td>
-      <td>-3.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>2.0</td>
-      <td>30.0</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>West Bank and Gaza</th>
-      <td>1120.0</td>
-      <td>5.096429</td>
-      <td>11.075240</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>7.0</td>
-      <td>268.0</td>
-    </tr>
-    <tr>
-      <th>Winter Olympics 2022</th>
-      <td>1120.0</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-    </tr>
-    <tr>
-      <th>Yemen</th>
-      <td>1120.0</td>
-      <td>1.927679</td>
-      <td>4.421608</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>2.0</td>
-      <td>60.0</td>
-    </tr>
-    <tr>
-      <th>Zambia</th>
-      <td>1120.0</td>
-      <td>3.616964</td>
-      <td>9.663354</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>2.0</td>
-      <td>72.0</td>
-    </tr>
-    <tr>
-      <th>Zimbabwe</th>
-      <td>1120.0</td>
-      <td>5.055357</td>
-      <td>12.746254</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>0.0</td>
-      <td>3.0</td>
-      <td>107.0</td>
-    </tr>
-  </tbody>
-</table>
-
-
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Total</th>
-      <th>Percent</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Province/State</th>
-      <td>198</td>
-      <td>0.685121</td>
-    </tr>
-    <tr>
-      <th>Lat</th>
-      <td>2</td>
-      <td>0.006920</td>
-    </tr>
-    <tr>
-      <th>Long</th>
-      <td>2</td>
-      <td>0.006920</td>
-    </tr>
-    <tr>
-      <th>Country/Region</th>
-      <td>0</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>2/4/22</th>
-      <td>0</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2/3/21</th>
-      <td>0</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>2/4/21</th>
-      <td>0</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>2/5/21</th>
-      <td>0</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>2/6/21</th>
-      <td>0</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>2/15/23</th>
-      <td>0</td>
-      <td>0.000000</td>
-    </tr>
-  </tbody>
-</table>
-<p>1125 rows × 2 columns</p>
-</div>
-
-
-
---lets remove the provice/state columns - there is a lot of missing data there, but could cause issues too, we will have to check  
+### Taking a closer look at the province/state feature:
 
     --------number of single country records, and number of provincial records---------
     False    201
@@ -424,26 +192,13 @@ Each column is a country, but we can see by scrolling over that not all of them 
     United Kingdom    15
     dtype: int64
 
-
-some of the data is in provincial format, some is single value for the country
+--So it appears some of the data is in provincial format, some is not
+--lets remove the province/state columns - there is a lot of missing data there
 
 
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -624,24 +379,12 @@ some of the data is in provincial format, some is single value for the country
 
 
 --If we scroll to the right, we can see that the count is cumulative. to get the deaths per day, we would need to substract day from final day
+--We need to drop that most recent day since we cant calculate a value form the cumulative sum for that day
 
 
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -801,193 +544,6 @@ some of the data is in provincial format, some is single value for the country
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Country/Region</th>
-      <th>1/27/20</th>
-      <th>1/28/20</th>
-      <th>1/29/20</th>
-      <th>1/30/20</th>
-      <th>1/31/20</th>
-      <th>2/1/20</th>
-      <th>2/2/20</th>
-      <th>2/3/20</th>
-      <th>2/4/20</th>
-      <th>...</th>
-      <th>2/6/23</th>
-      <th>2/7/23</th>
-      <th>2/8/23</th>
-      <th>2/9/23</th>
-      <th>2/10/23</th>
-      <th>2/11/23</th>
-      <th>2/12/23</th>
-      <th>2/13/23</th>
-      <th>2/14/23</th>
-      <th>2/15/23</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Afghanistan</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Albania</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Algeria</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Andorra</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Angola</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 1117 columns</p>
-</div>
-
-
-
---We need to drop that most recent day since we cant calculate a value form the cumulative sum for that day
-
-
-
-
-<div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1143,6 +699,7 @@ some of the data is in provincial format, some is single value for the country
 
 
 
+--We can also see there are at least two "events" (the olympics):
 
 
 
@@ -1200,56 +757,54 @@ some of the data is in provincial format, some is single value for the country
 
 
 
---We can see there are at least two "events" (the olympics), good to be aware of. We will leave them in for now. 
+--We will leave them in for now. 
 
 
-    
-![png](assets/images/tsa_files/Covid19_analysis_33_0.png)
-    
-
-
+### Plotting distribution of death counts per day
 
     
-![png](assets/images/tsa_files/Covid19_analysis_34_0.png)
-    
 
-
-
-    
 ![png](assets/images/tsa_files/Covid19_analysis_35_0.png)
     
 
-
+--Lets adjsut the number of bins and plot again...
 
     
 ![png](assets/images/tsa_files/Covid19_analysis_36_0.png)
     
 
+### Plotting total deaths by country for top 10 counties with highest official death counts
 
+
+  
+![png](assets/images/tsa_files/Covid19_analysis_33_0.png)
+    
+
+--lets adjsut this plot, turning it horizontally and coloring the country feature... 
 
     
 ![png](assets/images/tsa_files/Covid19_analysis_37_0.png)
     
 
-
+### Plotting daily deaths for top 10 counties over time
 
     
+
 ![png](assets/images/tsa_files/Covid19_analysis_40_0.png)
     
 
-
-
-
-
-    <AxesSubplot: xlabel='date', ylabel='date'>
-
-
-
+### Correlation in death rates plotted as a heat map
 
     
+
 ![png](assets/images/tsa_files/Covid19_analysis_41_1.png)
     
 
+--Interestingly, we can see there is correlation between some countries in the top 10!
+--Countries in Europe (UK, Italy, Germany, France) are moderately correlated
+--US is moderately correlated with European countries
+--This is very interesting suggests we may want to look deeper into some of these trends we are observing:
+--Are countries with correlated death rates: closer in proximity? On the same continent? Share language? Have trade or diplomatic status? Frequent tourism?
 
 # lets just look at the US data
 
@@ -1263,54 +818,16 @@ some of the data is in provincial format, some is single value for the country
 
 
 
-    <seaborn.axisgrid.FacetGrid at 0x162589e70>
+### First lets plot the distribution of deaths in the US:
 
 
 
-
-    
 ![png](assets/images/tsa_files/Covid19_analysis_45_1.png)
-    
-
-
-
-
-
-    1115564
-
-
-
-
-
-
-    1000.5058295964126
-
-
-
-
-
-
-    931.1271092807036
-
-
 
 
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1344,17 +861,16 @@ some of the data is in provincial format, some is single value for the country
 
 
 
-    427.41
-
-
-
 --The distribution of daily deaths in the US is right skewed.   
-Lets check the trend in the US Covid death rate by plotting number of deaths over time
+--Lets check the trend in the US Covid death rate by plotting number of deaths over time
 
+### Plotting daily deaths in US from 1/22/2020 - 2/15/2023
 
+--Important public health events indicated with verticle red dashed lines
+--first line is lock down
+--other lines are releases of vaccines/booster authorizations
     
 ![png](assets/images/tsa_files/Covid19_analysis_52_0.png)
     
 
 
-# Time Series Analysis
