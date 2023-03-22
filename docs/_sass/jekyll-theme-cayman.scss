@@ -438,41 +438,6 @@ a {
   }  
 }
 
-.site-footer {
-  padding-top: 2rem;
-  margin-top: 2rem;
-  border-top: solid 1px $hr-border-color;
-  background-color: #253544;
-  color: #fff;
-  text-align: center;
-  bottom: 0;
-  width: 100%;
-
-  @include large {
-    font-size: 1rem;
-    /*padding: 6rem 6rem 6rem;*/
-  }
-
-  @include medium {
-    font-size: 1rem;
-    /*padding: 4rem 4rem 4rem;*/
-  }
-
-  @include small {
-    font-size: 0.9rem;
-   /*padding: 2rem 1rem 2rem;*/
-  }
-}
-
-.site-footer-owner {
-  display: block;
-  font-weight: bold;
-}
-
-.site-footer-credits {
-  /*color: $blockquote-text-color;*/
-  color: #fff;
-}
 
 /*
      Navigation
@@ -660,4 +625,83 @@ a {
     transition: max-height .1s ease-out;
   }
   
+}
+/*!
+*
+* Footer Section
+*
+*/
+
+.footer {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: #2c3e50;
+  color: #fff;
+}
+
+.site-footer {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: #2c3e50;
+  color: #fff;
+  bottom: 0;
+  width: 100%;
+
+  @include large {
+    font-size: 1rem;
+    /*padding: 6rem 6rem 6rem;*/
+  }
+
+  @include medium {
+    font-size: 1rem;
+    /*padding: 4rem 4rem 4rem;*/
+  }
+
+  @include small {
+    font-size: 0.9rem;
+   /*padding: 2rem 1rem 2rem;*/
+  }
+}
+
+.site-footer-owner {
+  display: block;
+  font-weight: bold;
+}
+
+.site-footer-credits {
+  /*color: $blockquote-text-color;*/
+  color: #fff;
+}
+.text-center {
+  text-align: center !important;
+}
+.row {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: calc(-1 * var(--bs-gutter-y));
+  margin-right: calc(-0.5 * var(--bs-gutter-x));
+  margin-left: calc(-0.5 * var(--bs-gutter-x));
+}
+.row > * {
+  flex-shrink: 0;
+  width: 100%;
+  max-width: 100%;
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  margin-top: var(--bs-gutter-y);
+}
+.col-lg-4 {
+  flex: 0 0 auto;
+  width: 33.33333333%;
+}
+.mb-5 {
+  margin-bottom: 3rem !important;
+}
+.mb-lg-0 {
+  margin-bottom: 0 !important;
+}
+.mb-4 {
+  margin-bottom: 1.5rem !important;
 }
