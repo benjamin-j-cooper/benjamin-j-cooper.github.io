@@ -671,6 +671,7 @@ a {
 .text-center {
   text-align: center !important;
 }
+/*!
 .row {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
@@ -688,6 +689,7 @@ a {
   padding-left: calc(var(--bs-gutter-x) * 0.5);
   margin-top: var(--bs-gutter-y);
 }
+*/
 .col-lg-4 {
   flex: 0 0 auto;
   width: 33.33333333%;
