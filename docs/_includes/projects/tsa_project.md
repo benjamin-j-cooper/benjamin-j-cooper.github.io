@@ -171,8 +171,8 @@ Each column is a country, but we can see by scrolling over that not all of them 
     memory usage: 2.5+ MB
 
 
---1124 rows, each row is covid deaths reported for a country.  
---1121 of the columns are int64, so the death data is numeric, no need to convert it
+ - 1124 rows, each row is covid deaths reported for a country.  
+ - 1121 of the columns are int64, so the death data is numeric, no need to convert it
 
 ### Taking a closer look at the province/state feature:
 
@@ -192,8 +192,8 @@ Each column is a country, but we can see by scrolling over that not all of them 
     United Kingdom    15
     dtype: int64
 
---So it appears some of the data is in provincial format, some is not
---lets remove the province/state columns - there is a lot of missing data there
+ - So it appears some of the data is in provincial format, some is not
+ - lets remove the province/state columns - there is a lot of missing data there
 
 
 
@@ -378,8 +378,8 @@ Each column is a country, but we can see by scrolling over that not all of them 
 
 
 
---If we scroll to the right, we can see that the count is cumulative. to get the deaths per day, we would need to substract day from final day
---We need to drop that most recent day since we cant calculate a value form the cumulative sum for that day
+ - If we scroll to the right, we can see that the count is cumulative. to get the deaths per day, we would need to substract day from final day
+ - We need to drop that most recent day since we cant calculate a value form the cumulative sum for that day
 
 
 
@@ -699,7 +699,7 @@ Each column is a country, but we can see by scrolling over that not all of them 
 
 
 
---We can also see there are at least two "events" (the olympics):
+ - We can also see there are at least two "events" (the olympics):
 
 
 
@@ -757,7 +757,7 @@ Each column is a country, but we can see by scrolling over that not all of them 
 
 
 
---We will leave them in for now. 
+ - We will leave them in for now. 
 
 
 ### Plotting distribution of death counts per day
@@ -767,7 +767,7 @@ Each column is a country, but we can see by scrolling over that not all of them 
 ![png](assets/images/tsa_files/Covid19_analysis_35_0.png)
     
 
---Lets adjsut the number of bins and plot again...
+ - Lets adjsut the number of bins and plot again...
 
     
 ![png](assets/images/tsa_files/Covid19_analysis_36_0.png)
@@ -780,7 +780,7 @@ Each column is a country, but we can see by scrolling over that not all of them 
 ![png](assets/images/tsa_files/Covid19_analysis_33_0.png)
     
 
---lets adjsut this plot, turning it horizontally and coloring the country feature... 
+ - lets adjsut this plot, turning it horizontally and coloring the country feature... 
 
     
 ![png](assets/images/tsa_files/Covid19_analysis_37_0.png)
@@ -800,11 +800,11 @@ Each column is a country, but we can see by scrolling over that not all of them 
 ![png](assets/images/tsa_files/Covid19_analysis_41_1.png)
     
 
---Interestingly, we can see there is correlation between some countries in the top 10!
---Countries in Europe (UK, Italy, Germany, France) are moderately correlated
---US is moderately correlated with European countries
---This is very interesting suggests we may want to look deeper into some of these trends we are observing:
---Are countries with correlated death rates: closer in proximity? On the same continent? Share language? Have trade or diplomatic status? Frequent tourism?
+ - Interestingly, we can see there is correlation between some countries in the top 10!
+ - Countries in Europe (UK, Italy, Germany, France) are moderately correlated
+ - US is moderately correlated with European countries
+ - This is very interesting suggests we may want to look deeper into some of these trends we are observing:
+ - Are countries with correlated death rates: closer in proximity? On the same continent? Share language? Have trade or diplomatic status? Frequent tourism?
 
 # lets just look at the US data
 
@@ -861,14 +861,14 @@ Each column is a country, but we can see by scrolling over that not all of them 
 
 
 
---The distribution of daily deaths in the US is right skewed.   
---Lets check the trend in the US Covid death rate by plotting number of deaths over time
+ - The distribution of daily deaths in the US is right skewed.   
+ - Lets check the trend in the US Covid death rate by plotting number of deaths over time
 
 ### Plotting daily deaths in US from 1/22/2020 - 2/15/2023
 
---Important public health events indicated with verticle red dashed lines
---first line is lock down
---other lines are releases of vaccines/booster authorizations
+ - Important public health events indicated with verticle red dashed lines
+ - first line is lock down
+ - other lines are releases of vaccines/booster authorizations
     
 ![png](assets/images/tsa_files/Covid19_analysis_52_0.png)
     
