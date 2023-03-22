@@ -671,7 +671,7 @@ a {
 .text-center {
   text-align: center !important;
 }
-/*!
+
 .row {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
@@ -685,11 +685,11 @@ a {
   flex-shrink: 0;
   width: 100%;
   max-width: 100%;
-  padding-right: calc(var(--bs-gutter-x) * 0.5);
-  padding-left: calc(var(--bs-gutter-x) * 0.5);
+  /*!padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);*/
   margin-top: var(--bs-gutter-y);
 }
-*/
+
 .col-lg-4 {
   flex: 0 0 auto;
   width: 33.33333333%;
