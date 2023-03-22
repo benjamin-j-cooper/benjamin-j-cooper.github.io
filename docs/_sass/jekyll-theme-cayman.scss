@@ -395,9 +395,9 @@ a {
   .btn {
     display: inline-block;
     margin-bottom: 1rem;
-    color: rgba(255, 255, 255, 0.7);
-    background-color: rgba(255, 255, 255, 0.08);
-    border-color: rgba(255, 255, 255, 0.2);
+    color: #253544;
+    background-color: #15967d;
+    border-color: #15967d;
     border-style: solid;
     border-width: 1px;
     border-radius: 0.3rem;
@@ -407,8 +407,8 @@ a {
     &:hover {
       color: #15967d;
       text-decoration: none;
-      background-color: rgba(255, 255, 255, 0.2);
-      border-color: rgba(255, 255, 255, 0.3);
+      background-color: #15967d;
+      border-color: #15967d;
     }
   
     + .btn {
