@@ -395,20 +395,21 @@ a {
   .btn {
     display: inline-block;
     margin-bottom: 1rem;
-    color: #253544;
+    color: #fff;
     background-color: #15967d;
     border-color: #15967d;
     border-style: solid;
     border-width: 1px;
     border-radius: 0.3rem;
+    text-align: center;
     z-index: inherit;
     /*transition: color 0.2s, background-color 0.2s, border-color 0.2s;*/
   
     &:hover {
-      color: #15967d;
+      color: #fff;
       text-decoration: none;
-      background-color: #15967d;
-      border-color: #15967d;
+      background-color: #253544;
+      border-color: #253544;
     }
   
     + .btn {
@@ -704,4 +705,8 @@ a {
 }
 .mb-4 {
   margin-bottom: 1.5rem !important;
+}
+.mx-1 {
+  margin-right: 0.25rem !important;
+  margin-left: 0.25rem !important;
 }
