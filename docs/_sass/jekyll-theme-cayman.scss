@@ -70,7 +70,7 @@ a {
 
 .btn {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   text-align: left;
   margin-bottom: 1rem;
   color: rgba(255, 255, 255, 0.7);
@@ -106,12 +106,23 @@ a {
   @include medium {
     padding: 0.6rem 0.9rem;
     font-size: 0.9rem;
+    .flex-parent {
+      display: flex;
+    }
+    
+    .jc-center {
+      justify-content: center;
+    }
+    
+    button.margin-right {
+      margin-right: 20px;
+    }
   }
 
   @include small {
     padding: 0.75rem;
     font-size: 0.9rem;
-
+    justify-content: space-between;
   }
 }
 
