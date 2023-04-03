@@ -100,7 +100,6 @@ a {
   }
 
   @include small {
-    height: 50px;
     padding: 0.75rem;
     font-size: 0.9rem;
 
@@ -129,7 +128,13 @@ a {
 }
 
 .margin-right {
-  margin-right: 20px;
+  @include large {
+    margin-right: 20px;
+  }
+  @include medium {
+  }
+  @include small {
+  }
 }
 
 .page-header {
