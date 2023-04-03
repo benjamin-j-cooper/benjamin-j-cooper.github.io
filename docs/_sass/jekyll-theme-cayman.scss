@@ -100,8 +100,10 @@ a {
   }
 
   @include small {
+    height: 50px;
     padding: 0.75rem;
     font-size: 0.9rem;
+
 
     + .btn {
       margin-top: 1rem;
