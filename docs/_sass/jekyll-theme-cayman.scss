@@ -595,7 +595,7 @@ a {
     margin: auto;
   }
   .menu ul{
-    display: flex;
+    display: block;
     float: right;
     margin-left: auto;
     /*vertical-align: middle;*/
@@ -688,6 +688,7 @@ a {
 
 .site-footer {
   bottom: 0;
+  margin: 0;
   padding-top: 2rem;
   margin-top: 2rem;
   /*padding-bottom: 5rem;*/
