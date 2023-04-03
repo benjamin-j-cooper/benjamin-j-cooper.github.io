@@ -490,7 +490,7 @@ a {
   color: #fff;
   font-size: 60px;
   margin-left: 10px;
-  margin-top: 1px;
+  margin-top: 2px;
   &:hover{
     background-color: transparent;
     color: #16a085;
@@ -573,7 +573,7 @@ a {
   }
   .menu ul{
     display: inline-block;
-    vertical-align: middle;
+    /*vertical-align: middle;*/
     list-style: none;
     z-index: 999;
   }
