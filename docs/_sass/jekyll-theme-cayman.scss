@@ -32,7 +32,7 @@
 /* If mobile device, lock screen */
 @media screen and (min-width: 320px) and (max-width: 767px) and (orientation: landscape) {
   html {
-    width: 200px;
+    width: device-width;
   }
 }
 
