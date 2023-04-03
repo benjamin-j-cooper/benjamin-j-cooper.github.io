@@ -78,7 +78,7 @@ a {
   border-width: 1px;
   border-radius: 0.3rem;
   transition: color 0.2s, background-color 0.2s, border-color 0.2s;
-
+  z-index: 1030;
   &:hover {
     color: rgba(255, 255, 255, 0.8);
     text-decoration: none;
@@ -118,7 +118,7 @@ a {
   background-color: #fff;
   padding-top: 3rem;
   padding-bottom: 3rem;
-  z-index: 1030;
+
 }
 
 
