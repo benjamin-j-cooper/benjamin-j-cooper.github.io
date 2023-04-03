@@ -97,18 +97,6 @@ a {
   }
 
   @include large {
-    padding: 0.75rem 1rem;
-    .flex-parent {
-      display: flex;
-    }
-    
-    .jc-center {
-      justify-content: center;
-    }
-    
-    button.margin-right {
-      margin-right: 20px;
-    }
   }
 
   @include medium {
@@ -126,7 +114,7 @@ a {
 .btn-container {
   background-color: #fff;
   padding-top: 2rem;
-  padding-bottom: 0.5rem;
+  padding-bottom: 0;
 
 }
 
