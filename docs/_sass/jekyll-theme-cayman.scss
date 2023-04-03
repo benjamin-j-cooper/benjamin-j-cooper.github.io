@@ -353,6 +353,7 @@ a {
     background-color: $hr-border-color;
     border: 0;
   }
+  /*!
   @include large {
     table {
       overflow: auto;
@@ -392,6 +393,7 @@ a {
       overflow-x: hidden;
     }
   }
+  */
   .btn {
     display: inline-block;
     margin-bottom: 1rem;
