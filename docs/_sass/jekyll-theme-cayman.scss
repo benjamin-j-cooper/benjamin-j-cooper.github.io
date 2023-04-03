@@ -90,8 +90,17 @@ a {
 
   @include large {
     padding: 0.75rem 1rem;
-    justify-content: center;
-
+    .flex-parent {
+      display: flex;
+    }
+    
+    .jc-center {
+      justify-content: center;
+    }
+    
+    button.margin-right {
+      margin-right: 20px;
+    }
   }
 
   @include medium {
