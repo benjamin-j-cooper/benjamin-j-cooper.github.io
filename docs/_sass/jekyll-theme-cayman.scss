@@ -465,9 +465,10 @@ a {
   position: sticky;
   top: 0;
   width: 100%;
+  z-index: 1030;
 
   @include large {
-    padding: 6rem 6rem 6rem;
+    padding: 6rem 6rem 2rem;
   }
 
   @include medium {
