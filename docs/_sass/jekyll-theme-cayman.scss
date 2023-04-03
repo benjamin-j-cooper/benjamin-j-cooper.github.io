@@ -604,7 +604,9 @@ a {
     padding: 30px;
     z-index: 999;
   }
-
+  .right-align {
+    margin-left: auto;
+}
   .menu a:hover{
       background-color: transparent;
       color: #16a085;
