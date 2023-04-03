@@ -574,11 +574,9 @@ a {
   .nav {
     width: 100%;
     display: flex;
-    justify-content: space-between;
     position: fixed;
     flex-wrap: wrap;
     top: 0;
-    align-items: right;
 
      /*!
 
@@ -595,7 +593,6 @@ a {
   }
   .menu ul{
     display: block;
-    float: right;
     /*margin-left: auto;*/
     /*vertical-align: middle;*/
     list-style: none;
