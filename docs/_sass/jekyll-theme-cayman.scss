@@ -468,7 +468,7 @@ a {
   z-index: 1030;
 
   @include large {
-    padding: 4rem 4rem 4rem;
+    padding: 2rem 4rem 4rem;
   }
 
   @include medium {
@@ -502,7 +502,7 @@ a {
 }
 .hamb-line {
   background: #fff;
-  display: block;
+  display: inline-block;
   height: 2px;
   position: relative;
   width: 24px;
@@ -512,7 +512,7 @@ a {
 .hamb-line::after{
   background: #fff;
   content: '';
-  display: block;
+  display: inline-block;
   height: 100%;
   position: absolute;
   transition: all .2s ease-out;
@@ -616,8 +616,7 @@ a {
     /*position: relative;*/
     background-color: #253544;
     overflow: hidden;
-
-    position: fixed;
+    /*position: fixed;*/
 
 
     margin: 0;
