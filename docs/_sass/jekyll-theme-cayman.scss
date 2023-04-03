@@ -103,7 +103,7 @@ a {
 
   @include small {
     display: block;
-    width: 50%;
+    margin: 0 auto;
     padding: 0.75rem;
     font-size: 0.9rem;
 
@@ -112,6 +112,18 @@ a {
       margin-left: 0;
     }
   }
+}
+
+.flex-parent {
+  display: flex;
+}
+
+.jc-center {
+  justify-content: center;
+}
+
+.margin-right {
+  margin-right: 20px;
 }
 
 .page-header {
