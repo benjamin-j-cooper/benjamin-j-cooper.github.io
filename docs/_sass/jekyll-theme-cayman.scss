@@ -575,7 +575,7 @@ a {
   .nav {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     position: fixed;
     flex-wrap: wrap;
     top: 0;
@@ -595,7 +595,8 @@ a {
     margin: auto;
   }
   .menu ul{
-    display: inline-block;
+    display: flex;
+    margin-left: auto;
     /*vertical-align: middle;*/
     list-style: none;
     z-index: 999;
