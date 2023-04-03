@@ -318,6 +318,7 @@ a {
     word-break: normal;
     word-break: keep-all; // For Firefox to horizontally scroll wider tables.
     -webkit-overflow-scrolling: touch;
+    overflow: auto;
 
     th {
       font-weight: bold;
@@ -600,9 +601,10 @@ a {
   .side-menu{
     display: none;
 }
+/*!
   .logo{
     display: none;
-  }
+  }*/
 }
 
 @media screen and (max-width: #{$large-breakpoint}) {
