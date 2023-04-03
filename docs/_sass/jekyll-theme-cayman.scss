@@ -558,7 +558,7 @@ a {
     position: fixed;
     flex-wrap: wrap;
     top: 0;
-    text-align: center;
+    align-items: center;
      /*!
 
     background-color: #253544;
@@ -575,7 +575,6 @@ a {
   .menu ul{
     display: inline-block;
     /*vertical-align: middle;*/
-    padding-bottom: 10px;
     list-style: none;
     z-index: 999;
   }
