@@ -69,7 +69,9 @@ a {
 }
 
 .btn {
-  display: inline-block;
+  display: flex;
+  justify-content: space-between;
+  text-align: left;
   margin-bottom: 1rem;
   color: rgba(255, 255, 255, 0.7);
   background-color: rgba(255, 255, 255, 0.08);
@@ -86,10 +88,6 @@ a {
     border-color: rgba(255, 255, 255, 0.3);
   }
 
-  + .btn {
-    margin-left: 1rem;
-  }
-
   @include large {
     padding: 0.75rem 1rem;
   }
@@ -103,11 +101,6 @@ a {
     padding: 0.75rem;
     font-size: 0.9rem;
 
-
-    + .btn {
-      margin-top: 1rem;
-      margin-left: 0;
-    }
   }
 }
 
@@ -118,23 +111,8 @@ a {
 
 }
 
-
-.flex-parent {
-  display: flex;
-}
-
-.jc-center {
-  justify-content: center;
-}
-
-.margin-right {
-  @include large {
-    margin-right: 20px;
-  }
-  @include medium {
-  }
-  @include small {
-  }
+.mybuttons:last-child {
+  text-align: right;
 }
 
 .page-header {
