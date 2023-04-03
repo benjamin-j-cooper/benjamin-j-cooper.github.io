@@ -103,7 +103,6 @@ a {
 
   @include small {
     display: block;
-    margin: 0 auto;
     padding: 0.75rem;
     font-size: 0.9rem;
 
@@ -116,8 +115,8 @@ a {
 
 .btn-container {
   background-color: #fff;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
+  padding-top: 2rem;
+  padding-bottom: 0.5rem;
 
 }
 
