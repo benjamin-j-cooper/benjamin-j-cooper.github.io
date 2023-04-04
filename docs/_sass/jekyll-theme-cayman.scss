@@ -634,6 +634,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-left: 10px;
     margin-right: auto;
     color: #fff;
     font-size: 60px;
@@ -709,6 +710,9 @@ a {
       color: #16a085;
     
     }
+  }
+  .logo-desktop{
+    display: none;
   }
 }
 /*!
