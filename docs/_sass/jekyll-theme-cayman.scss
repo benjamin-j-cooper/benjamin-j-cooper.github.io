@@ -107,8 +107,9 @@ a {
   }
 
   @include small {
-    padding: 30px;
+    padding: 0.75rem;
     font-size: 0.9rem;
+    margin-left: 1rem;
     justify-content: space-between;
   }
 }
@@ -663,7 +664,7 @@ a {
     font-weight: bold;
     text-decoration: none;
     display: block;
-    padding: 30px;
+    padding: 20px;
     z-index: 999;
   }
   .menu li{
