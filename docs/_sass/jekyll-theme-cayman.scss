@@ -504,7 +504,20 @@ a {
 }
 
 /* Logo */
-.logo{
+.logo-mobile{
+  display: inline-block;
+  margin-right: auto;
+  color: #fff;
+  font-size: 60px;
+  margin-left: 10px;
+  margin-top: 1px;
+  &:hover{
+    background-color: transparent;
+    color: #16a085;
+  
+  }
+}
+.logo-desktop{
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -519,7 +532,6 @@ a {
   
   }
 }
-
 /* Menu hamburger Icon */
 .hamb{
   cursor: pointer;
@@ -628,8 +640,11 @@ a {
       color: #16a085;
 
   }
+  .logo-mobile{
+    display: none;
+  }
   .hamb{
-      display: none;
+    display: none;
   }
   .side-menu{
     display: none;
@@ -681,7 +696,10 @@ a {
     max-height: 0;
     transition: max-height .1s ease-out;
   }
-  .logo{
+  .logo-desktop{
+    display: none;
+  }
+  .logo-mobile{
     margin-top: 10px;
   }
 }
