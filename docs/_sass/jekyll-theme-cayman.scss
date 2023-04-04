@@ -586,7 +586,8 @@ a {
     margin: auto;
   }
   .menu {
-    display: block;
+    display: flex;
+    align-items: center;
     margin-left: auto;
     margin-right: 5rem;
     padding-bottom: 2rem;
@@ -596,6 +597,7 @@ a {
     
   }
   .menu li{
+    align-items: center;
     list-style: none;
     float: left;
     z-index: 999;
