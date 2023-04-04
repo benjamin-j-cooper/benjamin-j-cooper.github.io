@@ -564,7 +564,7 @@ a {
 @include large {
   .nav {
     width: 100%;
-    display: flex;
+    display: inline-flex;
     position: fixed;
     flex-wrap: wrap;
     top: 0;
@@ -583,9 +583,7 @@ a {
     margin: auto;
   }
   .menu {
-    display: flex;
-    padding-left: 0;
-    margin-bottom: 0;
+    display: block;
     /*margin-left: auto;*/
     /*vertical-align: middle;*/
     list-style: none;
