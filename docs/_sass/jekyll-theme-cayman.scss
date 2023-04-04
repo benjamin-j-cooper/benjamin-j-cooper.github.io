@@ -630,6 +630,15 @@ a {
     color: #16a085;
   
   }
+  .logo-desktop{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-right: auto;
+    color: #fff;
+    font-size: 60px;
+    z-index: 1031;
+    }
 }
   .hamb{
     display: none;
