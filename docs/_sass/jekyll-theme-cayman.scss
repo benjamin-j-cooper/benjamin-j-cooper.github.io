@@ -99,7 +99,6 @@ a {
   }
 
   @include large {
-    margin-right: 1rem;
   }
 
   @include medium {
@@ -572,7 +571,7 @@ a {
 @include large {
   .nav {
     width: 100%;
-    display: inline-flex;
+    display: flex;
     justify-content: space-between;
     align-items: center;
     position: fixed;
