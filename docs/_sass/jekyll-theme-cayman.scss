@@ -615,28 +615,13 @@ a {
 
   }
 /* Logo */
-.logo{
-  display: inline-block;
-  /*!justify-content: space-between;
-  align-items: center;
-  margin-right: auto;*/
-  color: #fff;
-  font-size: 60px;
-  margin-left: 10px;
-  margin-top: 1px;
-  z-index: 1031;
-  &:hover{
-    background-color: transparent;
-    color: #16a085;
-  
-  }
   .logo-desktop{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-left: 1rem;
+    margin-left: 4rem;
     color: #fff;
-    font-size: 60px;
+    font-size: 80px;
     z-index: 1031;
     }
 }
