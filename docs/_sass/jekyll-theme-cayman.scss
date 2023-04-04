@@ -506,6 +506,8 @@ a {
 /* Logo */
 .logo{
   display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-right: auto;
   color: #fff;
   font-size: 60px;
