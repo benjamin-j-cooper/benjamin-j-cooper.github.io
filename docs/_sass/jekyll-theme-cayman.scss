@@ -112,9 +112,7 @@ a {
     justify-content: space-between;
 
   }
-  .margin-right {
-      margin-right: 1rem;
-  }
+
 }
 
 .btn-container {
@@ -128,6 +126,10 @@ a {
 }
 
 .margin-right {
+  margin-right: 1rem;
+}
+/*!
+.margin-right {
   @include large {
     margin-right: 1rem;
   }
@@ -137,7 +139,7 @@ a {
   @include small {
     padding-right: .5rem;
   }
-}
+}*/
 
 .mybuttons:last-child {
   text-align: right;
