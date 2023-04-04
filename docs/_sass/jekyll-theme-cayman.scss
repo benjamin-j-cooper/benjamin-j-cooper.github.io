@@ -111,9 +111,6 @@ a {
     font-size: 0.9rem;
     justify-content: space-between;
   }
-  .margin-right {
-    margin-right: 1rem;
-  }
 }
 
 .btn-container {
@@ -124,6 +121,10 @@ a {
   padding-top: 2rem;
   padding-bottom: 0;
 
+}
+
+.margin-right {
+  margin-right: 1rem;
 }
 
 .mybuttons:last-child {
@@ -571,6 +572,8 @@ a {
   .nav {
     width: 100%;
     display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
     position: fixed;
     flex-wrap: wrap;
     top: 0;
@@ -600,17 +603,18 @@ a {
     
   }
   .menu li{
+    display: flex;
     align-items: center;
     list-style: none;
     float: left;
     z-index: 999;
   }
   .menu a {
+    display: flex;
     color: #fff;
     font-size: 100%;
     font-weight: bold;
     text-decoration: none;
-    display: block;
     padding: 30px;
     z-index: 999;
   }
