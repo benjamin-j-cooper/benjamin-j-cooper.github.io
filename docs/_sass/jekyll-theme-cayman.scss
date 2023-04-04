@@ -505,7 +505,8 @@ a {
 
 /* Logo */
 .logo{
-  display: inline-block;
+  display: flex;
+  margin-right: auto;
   color: #fff;
   font-size: 60px;
   margin-left: 10px;
