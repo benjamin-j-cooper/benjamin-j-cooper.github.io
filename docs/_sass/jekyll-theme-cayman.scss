@@ -99,9 +99,6 @@ a {
   }
 
   @include large {
-    .margin-right {
-      margin-right: 1rem;
-    }
   }
 
   @include medium {
@@ -113,9 +110,7 @@ a {
     padding: 0.75rem;
     font-size: 0.9rem;
     justify-content: space-between;
-    .margin-right {
-      padding-right: 1rem;
-    }
+
   }
 }
 
@@ -129,7 +124,17 @@ a {
 
 }
 
-
+.margin-right {
+  @include large {
+    margin-right: 1rem;
+  }
+  @include medium {
+    padding-right: .5rem;
+  }
+  @include small {
+    padding-right: .5rem;
+  }
+}
 
 .mybuttons:last-child {
   text-align: right;
