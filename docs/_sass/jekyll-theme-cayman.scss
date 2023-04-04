@@ -616,7 +616,7 @@ a {
   }
 /* Logo */
 .logo{
-  display: inline-flex;
+  display: inline-block;
   /*!justify-content: space-between;
   align-items: center;
   margin-right: auto;*/
@@ -624,7 +624,7 @@ a {
   font-size: 60px;
   margin-left: 10px;
   margin-top: 1px;
-  z-index: 1030;
+  z-index: 1031;
   &:hover{
     background-color: transparent;
     color: #16a085;
