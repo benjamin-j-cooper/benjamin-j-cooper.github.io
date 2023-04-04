@@ -80,7 +80,7 @@ a {
 
 .btn {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
   color: rgba(255, 255, 255, 0.7);
@@ -104,12 +104,20 @@ a {
   @include medium {
     padding: 0.6rem 0.9rem;
     font-size: 0.9rem;
+
+    .margin-right {
+      margin-right: 20px;
+    }
   }
 
   @include small {
     padding: 0.75rem;
     font-size: 0.9rem;
     justify-content: space-between;
+
+    .margin-right {
+      margin-right: 20px;
+    }
   }
 }
 
