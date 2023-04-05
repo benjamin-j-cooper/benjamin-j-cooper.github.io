@@ -44,6 +44,8 @@ markdown: GFM
 theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
+# Google Analytics
+google_analytics: G-TR9Q5NM2DX
 
 # Exclude from processing.
 # The following items will not be processed, by default.
