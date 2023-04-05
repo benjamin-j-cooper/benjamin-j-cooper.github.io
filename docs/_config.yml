@@ -38,14 +38,13 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  benjamin-j-cooper
 show_downloads: false
-google_analytics:
+# Google Analytics
+google_analytics: G-TR9Q5NM2DX
 markdown: GFM
 # Build settings
 theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
-# Google Analytics
-google_analytics: G-TR9Q5NM2DX
 
 # Exclude from processing.
 # The following items will not be processed, by default.
