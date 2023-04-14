@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Recommendation System
-description: An exploration of multiple recommendation algorithms usings the millions songs dataset
+description: An exploration of the millions songs dataset using multiple recommendation algorithms 
 ---
 
 {% include projects/rs_project.md %}
