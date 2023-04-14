@@ -293,7 +293,7 @@ Because there are very few users who have listened to a song more than 5 times, 
 
 
     
-![png](assets/images/rs_files/recommender_system_files/recommender_system_22_0.png)
+![png](assets/images/rs_files/recommender_system_22_0.png)
     
 
 
@@ -306,7 +306,7 @@ Because there are very few users who have listened to a song more than 5 times, 
 
 
     
-![png](assets/images/rs_files/recommender_system_files/recommender_system_23_1.png)
+![png](assets/images/rs_files/recommender_system_23_1.png)
     
 
 
@@ -321,7 +321,7 @@ From this distribution plot, we can see that the number of songs played by each 
 
 
     
-![png](assets/images/rs_files/recommender_system_files/recommender_system_26_1.png)
+![png](assets/images/rs_files/recommender_system_26_1.png)
     
 
 
@@ -353,7 +353,7 @@ Now lets continue to decrease the sparcity and imbalance of the data by filterin
 
 
     
-![png](assets/images/rs_files/recommender_system_files/recommender_system_30_1.png)
+![png](assets/images/rs_files/recommender_system_30_1.png)
     
 
 
@@ -385,7 +385,7 @@ We were able to dramatically reduce the size of the dataset with the previous st
 
 
     
-![png](assets/images/rs_files/recommender_system_files/recommender_system_34_1.png)
+![png](assets/images/rs_files/recommender_system_34_1.png)
     
 
 
@@ -398,7 +398,7 @@ We were able to dramatically reduce the size of the dataset with the previous st
 
 
     
-![png](assets/images/rs_files/recommender_system_files/recommender_system_35_1.png)
+![png](assets/images/rs_files/recommender_system_35_1.png)
     
 
 
@@ -432,7 +432,7 @@ Because there are very few users who have listened to a song more than 25 times,
 
 
     
-![png](assets/images/rs_files/recommender_system_files/recommender_system_41_1.png)
+![png](assets/images/rs_files/recommender_system_41_1.png)
     
 
 
@@ -445,7 +445,7 @@ Because there are very few users who have listened to a song more than 25 times,
 
 
     
-![png](assets/images/rs_files/recommender_system_files/recommender_system_42_1.png)
+![png](assets/images/rs_files/recommender_system_42_1.png)
     
 
 
@@ -734,7 +734,7 @@ Songs played in a year
 
 
     
-![png](assets/images/rs_files/recommender_system_files/recommender_system_63_1.png)
+![png](assets/images/rs_files/recommender_system_63_1.png)
     
 
 
@@ -1465,7 +1465,7 @@ Lets run the factor checking function and see if there is an ideal number of lat
 
 
     
-![png](assets/images/rs_files/recommender_system_files/recommender_system_129_0.png)
+![png](assets/images/rs_files/recommender_system_129_0.png)
     
 
 
