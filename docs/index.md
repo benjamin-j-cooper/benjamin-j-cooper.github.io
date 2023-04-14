@@ -12,7 +12,7 @@ layout: default
 [Analysis of Covid19 Death Rates](./tsa).
 
 ##### __Recommendation Systems:__
-[Recommendation System using 1 Millions Songs Dataset](./rsa).
+[Recommendation System using 1 Millions Songs Dataset](./rs).
 
 ##### __Decision Trees:__
 
