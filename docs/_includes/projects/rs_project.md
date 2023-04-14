@@ -62,19 +62,6 @@ http://millionsongdataset.com/
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -155,19 +142,6 @@ http://millionsongdataset.com/
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -319,7 +293,7 @@ Because there are very few users who have listened to a song more than 5 times, 
 
 
     
-![png](assets/images/rs_files/BenjaminCooper_Music_Recommendation_System_Full_Code_FinalSubmission_files/BenjaminCooper_Music_Recommendation_System_Full_Code_FinalSubmission_22_0.png)
+![png](assets/images/rs_files/recommender_system_files/recommender_system_22_0.png)
     
 
 
@@ -332,7 +306,7 @@ Because there are very few users who have listened to a song more than 5 times, 
 
 
     
-![png](assets/images/rs_files/BenjaminCooper_Music_Recommendation_System_Full_Code_FinalSubmission_files/BenjaminCooper_Music_Recommendation_System_Full_Code_FinalSubmission_23_1.png)
+![png](assets/images/rs_files/recommender_system_files/recommender_system_23_1.png)
     
 
 
@@ -347,7 +321,7 @@ From this distribution plot, we can see that the number of songs played by each 
 
 
     
-![png](assets/images/rs_files/BenjaminCooper_Music_Recommendation_System_Full_Code_FinalSubmission_files/BenjaminCooper_Music_Recommendation_System_Full_Code_FinalSubmission_26_1.png)
+![png](assets/images/rs_files/recommender_system_files/recommender_system_26_1.png)
     
 
 
@@ -379,7 +353,7 @@ Now lets continue to decrease the sparcity and imbalance of the data by filterin
 
 
     
-![png](assets/images/rs_files/BenjaminCooper_Music_Recommendation_System_Full_Code_FinalSubmission_files/BenjaminCooper_Music_Recommendation_System_Full_Code_FinalSubmission_30_1.png)
+![png](assets/images/rs_files/recommender_system_files/recommender_system_30_1.png)
     
 
 
@@ -411,7 +385,7 @@ We were able to dramatically reduce the size of the dataset with the previous st
 
 
     
-![png](assets/images/rs_files/BenjaminCooper_Music_Recommendation_System_Full_Code_FinalSubmission_files/BenjaminCooper_Music_Recommendation_System_Full_Code_FinalSubmission_34_1.png)
+![png](assets/images/rs_files/recommender_system_files/recommender_system_34_1.png)
     
 
 
@@ -424,7 +398,7 @@ We were able to dramatically reduce the size of the dataset with the previous st
 
 
     
-![png](assets/images/rs_files/BenjaminCooper_Music_Recommendation_System_Full_Code_FinalSubmission_files/BenjaminCooper_Music_Recommendation_System_Full_Code_FinalSubmission_35_1.png)
+![png](assets/images/rs_files/recommender_system_files/recommender_system_35_1.png)
     
 
 
@@ -458,7 +432,7 @@ Because there are very few users who have listened to a song more than 25 times,
 
 
     
-![png](assets/images/rs_files/BenjaminCooper_Music_Recommendation_System_Full_Code_FinalSubmission_files/BenjaminCooper_Music_Recommendation_System_Full_Code_FinalSubmission_41_1.png)
+![png](assets/images/rs_files/recommender_system_files/recommender_system_41_1.png)
     
 
 
@@ -471,7 +445,7 @@ Because there are very few users who have listened to a song more than 25 times,
 
 
     
-![png](assets/images/rs_files/BenjaminCooper_Music_Recommendation_System_Full_Code_FinalSubmission_files/BenjaminCooper_Music_Recommendation_System_Full_Code_FinalSubmission_42_1.png)
+![png](assets/images/rs_files/recommender_system_files/recommender_system_42_1.png)
     
 
 
@@ -519,19 +493,7 @@ Most interacted songs
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -603,19 +565,7 @@ Most interacted users
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -691,19 +641,7 @@ Songs played in a year
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -796,7 +734,7 @@ Songs played in a year
 
 
     
-![png](assets/images/rs_files/BenjaminCooper_Music_Recommendation_System_Full_Code_FinalSubmission_files/BenjaminCooper_Music_Recommendation_System_Full_Code_FinalSubmission_63_1.png)
+![png](assets/images/rs_files/recommender_system_files/recommender_system_63_1.png)
     
 
 
@@ -821,19 +759,7 @@ Let's create a function to find the top n songs for a recommendation based on th
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1190,19 +1116,7 @@ After tuning the user-user model,
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1395,19 +1309,7 @@ We can also find out **similar items** to a given item or its nearest neighbors 
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1563,7 +1465,7 @@ Lets run the factor checking function and see if there is an ideal number of lat
 
 
     
-![png](assets/images/rs_files/BenjaminCooper_Music_Recommendation_System_Full_Code_FinalSubmission_files/BenjaminCooper_Music_Recommendation_System_Full_Code_FinalSubmission_129_0.png)
+![png](assets/images/rs_files/recommender_system_files/recommender_system_129_0.png)
     
 
 
@@ -1626,19 +1528,7 @@ k
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1741,19 +1631,7 @@ k
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -1957,19 +1835,7 @@ In **clustering-based recommendation systems**, we explore the **similarities an
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2089,19 +1955,7 @@ Function to get user recommendations from cosign similarity text matrix based on
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2164,19 +2018,7 @@ Function to get user recommendations from cosign similarity text matrix based on
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2230,19 +2072,7 @@ We can now either get recommendations based on a song, or get recommendations fo
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2396,19 +2226,7 @@ now evaluate the performance of different weight combinations using the hold-out
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
@@ -2621,19 +2439,7 @@ now evaluate the performance of different weight combinations using the hold-out
 
 
 <div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
 <table border="1" class="dataframe">
   <thead>
     <tr style="text-align: right;">
