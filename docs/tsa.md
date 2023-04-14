@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Time Series Analysis
-description: this is an example of rendering a jupyter notebook as markdown on the page
+description: An exploratory analysis of Covid 19 death and vaccination data
 ---
 
 {% include projects/tsa_project.md %}

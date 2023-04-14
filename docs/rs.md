@@ -1,7 +1,7 @@
 ---
 layout: default
 title: Recommendation System
-description: This is an example of imbedding a github gist on the page
+description: An exploration of multiple recommendation algorithms usings the millions songs dataset
 ---
 
 {% include projects/rs_project.md %}
