@@ -27,7 +27,7 @@ Build a recommendation system to propose the top 10 songs for a user based on th
 The core data is the Taste Profile Subset released by the Echo Nest as part of the Million Song Dataset. There are two files in this dataset. The first file contains the details about the song id, titles, release, artist name, and the year of release. The second file contains the user id, song id, and the play count of users.
 
 ## **Data Source**
-http://millionsongdataset.com/
+http://millionsongdataset.com/ (1)
 
 The dataset is split into two .csv files I load here. The two dataframes and there features are:
 
@@ -759,7 +759,7 @@ For the untuned User-user similarity-based model,
 - The f1 score is 0.72
 - The average popularity of recommended songs is 24.3
 
-**predictions using knns.KNNBasic for user 6ccd111af9b4baa497aacd6d1863cbf5a141acc6:**
+predictions using knn.KNNBasic for user 6ccd111af9b4baa497aacd6d1863cbf5a141acc6:
 - prediction for Red Dirt Road by Brooks and Dunn: r_ui = 10.00   est = 3.97 
 - predictions for Till I collapse by Eminem and Nate Dogg: r_ui = 1.00   est = 3.74 
 - prediction for SOTTGXB12A6701FA0B by Phoenix (other pheonix songs are 7.6): r_ui = None   est = 3.45 
@@ -792,7 +792,7 @@ After tuning the user-user model,
 - The popularity of recommended songs has increased
 
 
-**predictions using knns.KNNBasic tuned for user 6ccd111af9b4baa497aacd6d1863cbf5a141acc6:**
+predictions using knn.KNNBasic tuned for user 6ccd111af9b4baa497aacd6d1863cbf5a141acc6:
 - prediction for Red Dirt Road by Brooks and Dunn: r_ui = 10.00   est = 8.95
 - predictions for Till I collapse by Eminem and Nate Dogg: r_ui = 1.00   est = 3.14
 - prediction for SOTTGXB12A6701FA0B by Phoenix (other pheonix songs are 7.6): r_ui = None   est = 3.38
@@ -804,7 +804,7 @@ After tuning the user-user model,
 - The model is rating the unheard song 3.38.
 - It seems that tuning the model has improved its ability to predict ratings
 
-#### Correcting the play_counts and Ranking the recommended songs
+Finally, because more 'popular' songs are more likely to be 'liked', I adjust the tuned recommendations by using a custom script to weight recommendations by the number of plays. The final, weighted, recommednations from the User-User similarity-based recommendation system for user '6ccd111af9b4baa497aacd6d1863cbf5a141acc6' are:
 
 
 
@@ -910,11 +910,13 @@ After tuning the user-user model,
 
 
 **Observations and Insights:**
-- Here we have predicted 10 songs for the user '6d625c6557df84b60d90426c0116138b617b9449' with the user-user collaborative filtering method
+- I predicted 10 songs for the user '6d625c6557df84b60d90426c0116138b617b9449' with the user-user collaborative filtering method
 - Some of the songs that are recommended to the user have a predicted rating close to 10, this is very good. 
-- Evaluating the tuned and untuned models, the tuned model has improved performance. 
+- Evaluating the tuned and untuned models, the tuned model has improved performance based on the evaluation metrics I chose. 
 
-### Item Item Similarity-based collaborative filtering recommendation systems 
+### Item-Item Similarity-based collaborative filtering recommendation system
+
+**Metrics of the item-item model compared to user-user**
 
     RMSE: 2.9990
     MAE:  2.2550
@@ -930,27 +932,25 @@ After tuning the user-user model,
 - the f1 score is 0.695
 - The popularity of recommended songs is 25
 
-    predictions using <surprise.prediction_algorithms.knns.KNNBasic object at 0x18baaaf80> for user 6d625c6557df84b60d90426c0116138b617b9449:
-    *************************
-    prediction for Red Dirt Road by Brooks and Dunn
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SODBSUF12A8C141975 r_ui = 10.00   est = 4.40   {'actual_k': 40, 'was_impossible': False}
-    *************************
-    predictions for Till I collapse by Eminem and Nate Dogg
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SOBPKPW12A6701E8F9 r_ui = 1.00   est = 4.44   {'actual_k': 23, 'was_impossible': False}
-    *************************
-    prediction for SOTTGXB12A6701FA0B by Phoenix (other pheonix songs are 7.6
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SOTTGXB12A6701FA0B r_ui = None   est = 4.72   {'actual_k': 12, 'was_impossible': False}
+
+predictions using knn.KNNBasic_item for user 6ccd111af9b4baa497aacd6d1863cbf5a141acc6:
+- prediction for Red Dirt Road by Brooks and Dunn: r_ui = 10.00   est = 4.40
+- predictions for Till I collapse by Eminem and Nate Dogg: r_ui = 1.00   est = 4.44
+- prediction for SOTTGXB12A6701FA0B by Phoenix (other pheonix songs are 7.6): r_ui = None   est = 4.72
 
 
 **Observations and Insights:**
 - The model is predicting 4.4 for the heard song that had rating of 10
 - The model is predicting 4.44 for the heard song that had rating of 1
 - The model is predicting 4.72 for the unheard song
-- Overall, the prediction of ratings is poor
+- Overall, the prediction of ratings is poor compaired to the tuned user-user model
+
+Next, I ran GridsearchCV to to search for the optimal parameters to tune the item-item model with. The optimal parameter settings after running GridSearch are:
 
     2.9243151529965794
     {'k': 50, 'min_k': 3, 'sim_options': {'name': 'cosine', 'user_based': False}}
 
+**Model Metrics for item-item model after rerunning with the tuned paramters**
 
     RMSE: 2.9040
     MAE:  2.3017
@@ -960,11 +960,14 @@ After tuning the user-user model,
     2        KNNbasic_item  2.998977  2.254952      0.658   0.736     0.695   
     3  KNNbasic_item_tuned  2.903997  2.301706      0.688   0.785     0.733   
     
-       popularity  
-    0        24.3  
-    1        64.9  
-    2        25.1  
-    3        25.5  
+
+
+
+predictions using knn.KNNBasic_item tuned for user 6ccd111af9b4baa497aacd6d1863cbf5a141acc6:
+- prediction for Red Dirt Road by Brooks and Dunn: r_ui = 10.00   est = 4.61
+- predictions for Till I collapse by Eminem and Nate Dogg: r_ui = 1.00   est = 4.44
+- prediction for SOTTGXB12A6701FA0B by Phoenix (other pheonix songs are 7.6): r_ui = None   est = 4.72
+
 
 
 **Observations and Insights:**
@@ -972,34 +975,12 @@ After tuning the user-user model,
 - The MAE has increased slightly
 - The f1 score increased  
 - The popularity is the same
-
-We can also find out **similar items** to a given item or its nearest neighbors based on this **KNNBasic algorithm**. Below we are finding the 5 most similar items to the item 0
-
-
-
-
-    [35, 288, 291, 392, 500]
-
-
-
-    predictions using <surprise.prediction_algorithms.knns.KNNBasic object at 0x18a1774c0> for user 6d625c6557df84b60d90426c0116138b617b9449:
-    *************************
-    prediction for Red Dirt Road by Brooks and Dunn
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SODBSUF12A8C141975 r_ui = 10.00   est = 4.61   {'actual_k': 50, 'was_impossible': False}
-    *************************
-    predictions for Till I collapse by Eminem and Nate Dogg
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SOBPKPW12A6701E8F9 r_ui = 1.00   est = 4.44   {'actual_k': 23, 'was_impossible': False}
-    *************************
-    prediction for SOTTGXB12A6701FA0B by Phoenix (other pheonix songs are 7.6
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SOTTGXB12A6701FA0B r_ui = None   est = 4.72   {'actual_k': 12, 'was_impossible': False}
-
-
-**Observations and Insights:**
 - similar to the untuned item-item model, our predictions are rather poor
 - In general, the predicted ratings of all the songs are about the same as the untuned model
 - Given that all of these songs are quite different, these predictions may not reflect the users actually taste. 
 
 
+The final, weighted, recommendations from the Item-Item similarity-based recommendation system for user '6ccd111af9b4baa497aacd6d1863cbf5a141acc6' are:
 
 
 <div>
@@ -1107,7 +1088,7 @@ We can also find out **similar items** to a given item or its nearest neighbors 
 
 ### Model Based Collaborative Filtering - Matrix Factorization
 
-Model-based Collaborative Filtering is a **personalized recommendation system**, the recommendations are based on the past behavior of the user and it is not dependent on any additional information. We use **latent features** to find recommendations for each user.
+Model-based Collaborative Filtering is a **personalized recommendation system**, the recommendations are based on the past behavior of the user and it is not dependent on any additional information. It uses **latent features** to find recommendations for each user. Here I am using Singular Value Decomposition (SVD) method from the Suprise library, and calculate the metrics after running the base model with default settings:
 
     RMSE: 2.7215
     MAE:  2.1682
@@ -1118,32 +1099,19 @@ Model-based Collaborative Filtering is a **personalized recommendation system**,
     3  KNNbasic_item_tuned  2.903997  2.301706      0.688   0.785     0.733   
     4                  SVD  2.721453  2.168153      0.696   0.798     0.744   
     
-       popularity  
-    0        24.3  
-    1        64.9  
-    2        25.1  
-    3        25.5  
-    4       138.3  
+
+
+
+predictions using SVD tuned for user 6ccd111af9b4baa497aacd6d1863cbf5a141acc6:
+- prediction for Red Dirt Road by Brooks and Dunn: r_ui = 10.00   est = 8.95
+- predictions for Till I collapse by Eminem and Nate Dogg: r_ui = 1.00   est = 2.06
+- prediction for SOTTGXB12A6701FA0B by Phoenix (other pheonix songs are 7.6): r_ui = None   est = 5.39
 
 
 **Observations and Insights:**
 - The SVD model has the best RMSE and MAE of any models yet
 - The f1 score is higher than any other untuned models
 - The popularity of recommended songs is far higher than the other models
-
-    predictions using <surprise.prediction_algorithms.matrix_factorization.SVD object at 0x18bad1330> for user 6d625c6557df84b60d90426c0116138b617b9449:
-    *************************
-    prediction for Red Dirt Road by Brooks and Dunn
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SODBSUF12A8C141975 r_ui = 10.00   est = 8.95   {'was_impossible': False}
-    *************************
-    predictions for Till I collapse by Eminem and Nate Dogg
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SOBPKPW12A6701E8F9 r_ui = 1.00   est = 2.06   {'was_impossible': False}
-    *************************
-    prediction for SOTTGXB12A6701FA0B by Phoenix (other pheonix songs are 7.6
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SOTTGXB12A6701FA0B r_ui = None   est = 5.39   {'was_impossible': False}
-
-
-**Observations and Insights:**
 - The predictions for the heard song with rating 10 is 8.95
 - The predictions for the heard song with rating 1 is 2.06
 - The prediciton for the unheard song is 5.39
@@ -1151,11 +1119,7 @@ Model-based Collaborative Filtering is a **personalized recommendation system**,
 
 #### Improving matrix factorization based recommendation system by tuning its hyperparameters
 
-Function to Tune the number of factors:
-
-Function to plot the number of factor tuning:
-
-Lets run the factor checking function and see if there is an ideal number of latent features we can specify in our tuned model:
+To tune the SVD model, first I run a factor checking function that plots the RMSE based on a range of latent features. Here is the plot for this data run for 100 features:
 
 
     
@@ -1163,18 +1127,12 @@ Lets run the factor checking function and see if there is an ideal number of lat
     
 
 
-According to the figure, there is a decreasing trend of better performance with higher k. The lowest RMSE is achieved when 
-k
-=
-80
-. However, it is worth mentioning that 
-k
-=
-52 and >84 are also good. The result suggests a range of values which can be used in GridSearchCV()for parameter tunning.
+According to the figure, there is a decreasing trend of better performance with higher k. The lowest RMSE is achieved when k is 8. However, it is worth mentioning that k = 52 and >84 are also good. The result suggests a range of values which can be used in GridSearchCV()for parameter tunning. Next I ran GridSearchCV to find the optimal parameter settings. The parameter settings for the model that reduced RMSE the most are:
 
     2.7097656150739744
     {'n_epochs': 30, 'lr_all': 0.01, 'reg_all': 0.4, 'n_factors': 80}
 
+**Model Metrics for Matrix Factorization (SVD) method after rerunning with the tuned paramters**
 
     RMSE: 2.6736
     MAE:  2.1434
@@ -1185,14 +1143,13 @@ k
     3  KNNbasic_item_tuned  2.903997  2.301706      0.688   0.785     0.733   
     4                  SVD  2.721453  2.168153      0.696   0.798     0.744   
     5            SVD_tuned  2.673590  2.143426      0.694   0.799     0.743   
-    
-       popularity  
-    0        24.3  
-    1        64.9  
-    2        25.1  
-    3        25.5  
-    4       138.3  
-    5        43.2  
+
+
+
+predictions using SVD tuned tuned for user 6ccd111af9b4baa497aacd6d1863cbf5a141acc6:
+- prediction for Red Dirt Road by Brooks and Dunn: r_ui = 10.00   est = 8.22
+- predictions for Till I collapse by Eminem and Nate Dogg: r_ui = 1.00   est = 4.71
+- prediction for SOTTGXB12A6701FA0B by Phoenix (other pheonix songs are 7.6): r_ui = None   est = 5.13
 
 
 **Observations and Insights:**
@@ -1200,25 +1157,12 @@ k
 - the f1_score of the the tuned SVD model increased .01
 - The popularity of the tuned model dropped significantly
 - The popularity of the base model may have been affected by a single highly rated song.
-
-    predictions using <surprise.prediction_algorithms.matrix_factorization.SVD object at 0x18ed870a0> for user 6d625c6557df84b60d90426c0116138b617b9449:
-    *************************
-    prediction for Red Dirt Road by Brooks and Dunn
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SODBSUF12A8C141975 r_ui = 10.00   est = 8.22   {'was_impossible': False}
-    *************************
-    predictions for Till I collapse by Eminem and Nate Dogg
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SOBPKPW12A6701E8F9 r_ui = 1.00   est = 4.71   {'was_impossible': False}
-    *************************
-    prediction for SOTTGXB12A6701FA0B by Phoenix (other pheonix songs are 7.6
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SOTTGXB12A6701FA0B r_ui = None   est = 5.13   {'was_impossible': False}
-
-
-**Observations and Insights:**
 - The predictions for the heard song with rating 10 is about the same as the untuned model
 - the prediction for the heard song with rating 1 came up a bit to 2
 - In general the predicted ratings are much better than the non matrix factorization models, but tuning the SVD model did not improve performance much if at all.
 
 
+Since the untuned SVD model had predictions that were the closest to the users actually play counts, Im going to look at the weighted recommendations for both the default and tuned SVD algorithms. The final, weighted, recommendations from default SVD matrix factorization algorithm for user '6ccd111af9b4baa497aacd6d1863cbf5a141acc6' are:
 
 
 <div>
@@ -1321,7 +1265,7 @@ k
 
 
 
-
+And the Tuned recommendations:
 
 
 <div>
@@ -1430,7 +1374,7 @@ k
 
 ### Cluster Based Recommendation System
 
-In **clustering-based recommendation systems**, we explore the **similarities and differences** in people's tastes in songs based on how they rate different songs. We cluster similar users together and recommend songs to a user based on play_counts from other users in the same cluster.
+In **clustering-based recommendation systems**, we explore the **similarities and differences** in people's tastes in songs based on how they rate different songs. We cluster similar users together and recommend songs to a user based on play_counts from other users in the same cluster. After running the Coclustering method with default settings, the metrics compared to the other models are:
 
     RMSE: 2.9591
     MAE:  2.2116
@@ -1442,45 +1386,28 @@ In **clustering-based recommendation systems**, we explore the **similarities an
     4                  SVD  2.721453  2.168153      0.696   0.798     0.744   
     5            SVD_tuned  2.673590  2.143426      0.694   0.799     0.743   
     6         CoClustering  2.959111  2.211564      0.622   0.666     0.643   
-    
-       popularity  
-    0        24.3  
-    1        64.9  
-    2        25.1  
-    3        25.5  
-    4       138.3  
-    5        43.2  
-    6        37.3  
+
+
+predictions using SVD tuned tuned for user 6ccd111af9b4baa497aacd6d1863cbf5a141acc6:
+- prediction for Red Dirt Road by Brooks and Dunn: r_ui = 10.00   est = 4.71
+- predictions for Till I collapse by Eminem and Nate Dogg: r_ui = 1.00   est = 4.00
+- prediction for SOTTGXB12A6701FA0B by Phoenix (other pheonix songs are 7.6): r_ui = None   est = 3.17
 
 
 **Observations and Insights:**
 - The clustering model has an RMSE of 2.9 and MAE of 2.2
 - The f1 score is .643
 - Overal the clustering metrics are performing similarly slightly poorer compared to other models
-
-    predictions using <surprise.prediction_algorithms.co_clustering.CoClustering object at 0x18ed866e0> for user 6d625c6557df84b60d90426c0116138b617b9449:
-    *************************
-    prediction for Red Dirt Road by Brooks and Dunn
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SODBSUF12A8C141975 r_ui = 10.00   est = 4.71   {'was_impossible': False}
-    *************************
-    predictions for Till I collapse by Eminem and Nate Dogg
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SOBPKPW12A6701E8F9 r_ui = 1.00   est = 4.00   {'was_impossible': False}
-    *************************
-    prediction for SOTTGXB12A6701FA0B by Phoenix (other pheonix songs are 7.6
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SOTTGXB12A6701FA0B r_ui = None   est = 3.17   {'was_impossible': False}
-
-
-**Observations and Insights:**
 - The predicted rating for the song with rating 10 is 4.71
 - The predictions for the other heard song with raitng 1 is 4
 
-#### Improving clustering-based recommendation system by tuning its hyper-parameters
+Next, I run GridsearchCV on the clustering-based recommendation system to tune its hyper-parameters. The optimal hyperparameters suggested by the search are:
 
     3.0094114249385258
     {'n_cltr_u': 3, 'n_cltr_i': 3, 'n_epochs': 40}
 
 
-**Think About It**: How do the parameters affect the performance of the model? Can we improve the performance of the model further? Check the available hyperparameters [here](https://surprise.readthedocs.io/en/stable/co_clustering.html).
+**The model metrics after rerunning coclusteringwith the tuned hyperparamters**
 
     RMSE: 2.9613
     MAE:  2.2139
@@ -1493,40 +1420,18 @@ In **clustering-based recommendation systems**, we explore the **similarities an
     5            SVD_tuned  2.673590  2.143426      0.694   0.799     0.743   
     6         CoClustering  2.959111  2.211564      0.622   0.666     0.643   
     7   CoClustering_tuned  2.961292  2.213922      0.622   0.666     0.643   
-    
-       popularity  
-    0        24.3  
-    1        64.9  
-    2        25.1  
-    3        25.5  
-    4       138.3  
-    5        43.2  
-    6        37.3  
-    7        37.3  
 
+
+predictions using SVD tuned tuned for user 6ccd111af9b4baa497aacd6d1863cbf5a141acc6:
+- prediction for Red Dirt Road by Brooks and Dunn: r_ui = 10.00   est = 4.7
+- predictions for Till I collapse by Eminem and Nate Dogg: r_ui = 1.00   est = 3.99
+- prediction for SOTTGXB12A6701FA0B by Phoenix (other pheonix songs are 7.6): r_ui = None   est = 3.23
 
 **Observations and Insights:**
-- Tuning the clustering model has not improved it
+- Tuning the clustering model has not improved it, or only marginally
+- The prediction for the heard song with rating 10 is 4.7
 
-    predictions using <surprise.prediction_algorithms.co_clustering.CoClustering object at 0x18ed86d10> for user 6d625c6557df84b60d90426c0116138b617b9449:
-    *************************
-    prediction for Red Dirt Road by Brooks and Dunn
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SODBSUF12A8C141975 r_ui = 10.00   est = 4.70   {'was_impossible': False}
-    *************************
-    predictions for Till I collapse by Eminem and Nate Dogg
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SOBPKPW12A6701E8F9 r_ui = 1.00   est = 3.99   {'was_impossible': False}
-    *************************
-    prediction for SOTTGXB12A6701FA0B by Phoenix (other pheonix songs are 7.6
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SOTTGXB12A6701FA0B r_ui = None   est = 3.23   {'was_impossible': False}
-
-
-**Observations and Insights:**
-- The prediction for the heard song with rating 10 is 3.7
-
-### Correcting the play_count and Ranking the above songs
-
-
-
+The final, weighted, recommendations from the tuned coclustering algorithm for user '6ccd111af9b4baa497aacd6d1863cbf5a141acc6' are:
 
 <div>
 
@@ -1631,21 +1536,9 @@ In **clustering-based recommendation systems**, we explore the **similarities an
 **Observations and Insights:**
 - Ther top 10 recommended songs are similar to the user-user and SVD models
 
-# Part II: Content Based Recommendation System
+### Content Based Recommendation System
 
-So far we have only used the play_count of songs to find recommendations but we have other information/features on songs as well, and these features can be used to increase the personalization of the recommendation system. For example, we can use the artist name and album title to recommend songs to users from artists/albums they like but songs they have not heard yet. We can also include the year the song was released and recommedn music from the same time period. 
-
-### Some Useful Functions
-
-function to pre-process the text data:
-
-Function to get top 20 similar songs based on text cosign similarity:
-
-Function to get user recommendations from cosign similarity text matrix based on a users top listened to songs:
-
-### Preprocessing features for tf-idf
-
-
+So far I have only used the play_count of songs to find recommendations but there are other information/features on songs as well, and these features can be used to increase the personalization of the recommendation system. For example, we can use the artist name and album title to recommend songs to users from artists/albums they like but songs they have not heard yet. We can also include the year the song was released and recommend music from the same time period. Before Running any of the content based models, I preprocessed the text data by tolkenizing it with natural language processing methods that come standard in the NLTK package. First, I coded the year column into text:
 
 
 <div>
@@ -1707,7 +1600,7 @@ Function to get user recommendations from cosign similarity text matrix based on
 </div>
 
 
-
+Then I combined all of the text features into a single column 'text':
 
 
 
@@ -1757,12 +1650,7 @@ Function to get user recommendations from cosign similarity text matrix based on
 </div>
 
 
-
-### tfidf and cosign similarity
-
-We can now either get recommendations based on a song, or get recommendations for a user with the function we made based on that users top songs
-
-
+I then calculated a tf-idf matrix and calculated the cosign similarity. The Recommendations using this method are:
 
 
 <div>
@@ -1869,28 +1757,14 @@ We can now either get recommendations based on a song, or get recommendations fo
 - This is excellent, we are recommending songs by the same artists/albums the user has likes and adding in some weight for the decade of the users song preferences. 
 - We are also ranking the recommendations based on song popularity, so more listened to songs by other users will be weighted heavier for this user
 
-# Part III: hybrid recommendation system
-We have explored five different recommender methods (six if you include the popularity-based method) for recommending songs to a user in a personalized way. This is all well and good, but how do we know which method is recommending songs the user will actualy listen to? As an avid listener of music, is it not also true that a users preferences can change, and may change drastically during the day or from day to day? It also seems that the models we have presented so far sometimes recommend similar songs, but other models are drastically different as in the item-item recommendations and content based recommendations. In this section, I build a hybrid recommender system which takes into account recommendations from multiple models, applys weights based on which models we want to be most represented in the results, and then provides a 'hybrid' recommendation. 
+### hybrid recommendation system
+I have explored five different recommender methods (six if you include the popularity-based method) for recommending songs to a user in a personalized way. This is all well and good, but how do we know which method is recommending songs the user will actualy listen to? As an avid listener of music, is it not also true that a users preferences can change, and may change drastically during the day or from day to day? It also seems that the models we have presented so far sometimes recommend similar songs, but other models are drastically different as in the item-item recommendations and content based recommendations. In this section, I build a hybrid recommender system which takes into account recommendations from multiple models, applys weights based on which models we want to be most represented in the results, and then provides a 'hybrid' recommendation. 
 
-### Functions
-
-define a function to combine the predictions using the weights to combine recommender matrices from multiple models and compute the RMSE score:
-
-Function to combine matrices from multiple models, with specified weightings, and Content Based recommendations, and output hybrid recommendation list:
-
-Here I fit models and make predictions for two models:
+In my hybrid system, I fit models and make predictions by combing two of the previously evaluated models:
 - SVD (default settings)
 - User-User collaborative Filtering (tuned)<br>
 
-I chose these two models because both had the best F1_scores metrics, both had fairly good predictions, and both recommended markedly different songs. 
-
-- I then add in a subset of recommendations from the content-based filtering method to increase the 'familiarity' for the user of the recommended songs/artists
-
-This will hopefully provide a highly personalized recommendation for a user with a balance of new songs and familiar artists to give choices based on potential dynamic user preferences.
-
-
-
-now evaluate the performance of different weight combinations using the hold-out set. For example, we can try different combinations of wA and wB, ranging from (0.1, 0.9) to (0.9, 0.1), and compute their respective RMSE scores:
+I chose these two models because both had the best F1_scores metrics, both had fairly good predictions, and both recommended markedly different songs. I then add in a subset of recommendations from the content-based filtering method to increase the 'familiarity' for the user of the recommended songs/artists. This will hopefully provide a highly personalized recommendation for a user with a balance of new songs and familiar artists to give choices based on potential dynamic user preferences. I also evaluated the performance of different weight combinations using the hold-out set. For example, we can try different combinations of wA and wB for the SVD and User-User model combination, ranging from (0.1, 0.9) to (0.9, 0.1), and compute their respective RMSE scores:
 
     RMSE: 2.7976
     MAE:  2.2302
@@ -1912,192 +1786,6 @@ now evaluate the performance of different weight combinations using the hold-out
 **Observations and Insights:**
 - there is not much difference in RMSE for the different combinations of model weights
 - The 'best' weight combination is SVD .7 - collaborative filtering .3
-
-    popularity of recommended songs:  85.1
-
-
-
-
-
-<div>
-
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>title</th>
-      <th>artist_name</th>
-      <th>count_plays</th>
-      <th>predicted_interaction</th>
-      <th>corrected_ratings</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Clara meets Slope - Hard To Say</td>
-      <td>Clara Hill</td>
-      <td>89</td>
-      <td>9.677092</td>
-      <td>9.571092</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Catch You Baby (Steve Pitron &amp; Max Sanna Radio...</td>
-      <td>Lonnie Gordon</td>
-      <td>616</td>
-      <td>8.470891</td>
-      <td>8.430600</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Make Her Say</td>
-      <td>Kid Cudi / Kanye West / Common</td>
-      <td>156</td>
-      <td>7.772713</td>
-      <td>7.692649</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Cats In The Cradle</td>
-      <td>Ugly Kid Joe</td>
-      <td>30</td>
-      <td>7.789474</td>
-      <td>7.606899</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Recado Falado (Metrô Da Saudade)</td>
-      <td>Alceu Valença</td>
-      <td>143</td>
-      <td>7.642525</td>
-      <td>7.558901</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>#40</td>
-      <td>DAVE MATTHEWS BAND</td>
-      <td>72</td>
-      <td>7.661807</td>
-      <td>7.543956</td>
-    </tr>
-    <tr>
-      <th>6</th>
-      <td>Walk Through Hell (featuring Max Bemis Acousti...</td>
-      <td>Say Anything</td>
-      <td>31</td>
-      <td>7.678929</td>
-      <td>7.499324</td>
-    </tr>
-    <tr>
-      <th>7</th>
-      <td>Eternal Flame (Single Version)</td>
-      <td>Atomic Kitten</td>
-      <td>49</td>
-      <td>7.411352</td>
-      <td>7.268495</td>
-    </tr>
-    <tr>
-      <th>8</th>
-      <td>Love Is Not A Fight</td>
-      <td>Warren Barfield</td>
-      <td>36</td>
-      <td>7.379032</td>
-      <td>7.212366</td>
-    </tr>
-    <tr>
-      <th>9</th>
-      <td>Voices On A String (Album Version)</td>
-      <td>Thursday</td>
-      <td>128</td>
-      <td>7.295797</td>
-      <td>7.207409</td>
-    </tr>
-    <tr>
-      <th>10</th>
-      <td>The Quest</td>
-      <td>HYPOCRISY</td>
-      <td>27</td>
-      <td>7.333201</td>
-      <td>7.140751</td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>Hasta La Vista</td>
-      <td>Jordan Francis/Roshon Bernard Fegan</td>
-      <td>53</td>
-      <td>7.219907</td>
-      <td>7.082546</td>
-    </tr>
-    <tr>
-      <th>12</th>
-      <td>(Nice Dream)</td>
-      <td>Radiohead</td>
-      <td>73</td>
-      <td>7.133452</td>
-      <td>7.016411</td>
-    </tr>
-    <tr>
-      <th>13</th>
-      <td>He's A Pirate</td>
-      <td>Klaus Badelt</td>
-      <td>20</td>
-      <td>7.165812</td>
-      <td>6.942205</td>
-    </tr>
-    <tr>
-      <th>14</th>
-      <td>Sunburn</td>
-      <td>Muse</td>
-      <td>15</td>
-      <td>7.181355</td>
-      <td>6.923156</td>
-    </tr>
-    <tr>
-      <th>15</th>
-      <td>Cold Blooded (Acid Cleanse)</td>
-      <td>The fFormula</td>
-      <td>38</td>
-      <td>7.000000</td>
-      <td>6.837779</td>
-    </tr>
-    <tr>
-      <th>16</th>
-      <td>Hold Me_ Thrill Me_ Kiss Me_ Kill Me</td>
-      <td>U2</td>
-      <td>33</td>
-      <td>6.770725</td>
-      <td>6.596648</td>
-    </tr>
-    <tr>
-      <th>17</th>
-      <td>Twilight Galaxy</td>
-      <td>Metric</td>
-      <td>28</td>
-      <td>6.696697</td>
-      <td>6.507715</td>
-    </tr>
-    <tr>
-      <th>18</th>
-      <td>Last Nite</td>
-      <td>The Strokes</td>
-      <td>21</td>
-      <td>6.724206</td>
-      <td>6.505988</td>
-    </tr>
-    <tr>
-      <th>19</th>
-      <td>The Calculation (Album Version)</td>
-      <td>Regina Spektor</td>
-      <td>44</td>
-      <td>6.636842</td>
-      <td>6.486086</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
 
 ## **Conclusion and Recommendations**
 
@@ -2128,7 +1816,6 @@ now evaluate the performance of different weight combinations using the hold-out
 - This hybrid recommender system could be adjusted and improved further based on more features for content-based recommending or alternative compositions of models/weights
 
 **Final 10 song recommendation for user 6d625c6557df84b60d90426c0116138b617b9449:** 
-
 
 
 
