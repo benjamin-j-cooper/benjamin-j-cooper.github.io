@@ -21,13 +21,14 @@ Build a recommendation system to propose the top 10 songs for a user based on th
 - Based on criteria, which model is 'best'?
 - Is this model good enough for production?
 
-### **The problem formulation**:
-
-Using data science, we are trying to provide personalized song recommendations (the 'best' songs) to a user that that user is most likely to enjoy/like/interact-with the most based on that users personal musical preferences. 
-
-## **Data Dictionary**
+## **The Data**
 
 The core data is the Taste Profile Subset released by the Echo Nest as part of the Million Song Dataset. There are two files in this dataset. The first file contains the details about the song id, titles, release, artist name, and the year of release. The second file contains the user id, song id, and the play count of users.
+
+## **Data Source**
+http://millionsongdataset.com/
+
+The dataset is split into two .csv files I load here. The two dataframes and there features are:
 
 __song_data__
 
@@ -41,22 +42,18 @@ __song_data__
 
 - year - Year of release
 
-__count_data__
 
-- user _id - A unique id given to the user
 
-- song_id - A unique id given to the song
-
-- play_count - Number of times the song was played
-
-## **Data Source**
-http://millionsongdataset.com/
-
-### **Importing Libraries and the Dataset**
-
-### **Load the dataset**
-
-### **Understanding the data by viewing a few observations**
+    <class 'pandas.core.frame.DataFrame'>
+    RangeIndex: 2000000 entries, 0 to 1999999
+    Data columns (total 3 columns):
+      #   Column      Dtype 
+    ---  ------      ----- 
+      0   user_id     object
+      1   song_id     object
+      2   play_count  int64 
+    dtypes: int64(1), object(2)
+    memory usage: 45.8+ MB
 
 
 
@@ -138,6 +135,28 @@ http://millionsongdataset.com/
 
 
 
+__count_data__
+
+- user _id - A unique id given to the user
+
+- song_id - A unique id given to the song
+
+- play_count - Number of times the song was played
+
+
+
+    <class 'pandas.core.frame.DataFrame'>
+    RangeIndex: 1000000 entries, 0 to 999999
+    Data columns (total 5 columns):
+     #   Column       Non-Null Count    Dtype 
+    ---  ------       --------------    ----- 
+     0   song_id      1000000 non-null  object
+     1   title        999985 non-null   object
+     2   release      999995 non-null   object
+     3   artist_name  1000000 non-null  object
+     4   year         1000000 non-null  int64 
+    dtypes: int64(1), object(4)
+    memory usage: 38.1+ MB
 
 
 
@@ -239,35 +258,6 @@ http://millionsongdataset.com/
 </div>
 
 
-
-### **Let us check the data types and and missing values of each column**
-
-    <class 'pandas.core.frame.DataFrame'>
-    RangeIndex: 2000000 entries, 0 to 1999999
-    Data columns (total 3 columns):
-     #   Column      Dtype 
-    ---  ------      ----- 
-     0   user_id     object
-     1   song_id     object
-     2   play_count  int64 
-    dtypes: int64(1), object(2)
-    memory usage: 45.8+ MB
-
-
-    <class 'pandas.core.frame.DataFrame'>
-    RangeIndex: 1000000 entries, 0 to 999999
-    Data columns (total 5 columns):
-     #   Column       Non-Null Count    Dtype 
-    ---  ------       --------------    ----- 
-     0   song_id      1000000 non-null  object
-     1   title        999985 non-null   object
-     2   release      999995 non-null   object
-     3   artist_name  1000000 non-null  object
-     4   year         1000000 non-null  int64 
-    dtypes: int64(1), object(4)
-    memory usage: 38.1+ MB
-
-
 #### **Observations and Insights:**
 - The Count dataset has 3 columns (user_id, song_id, and play_count)
 - The Count dataset has 2,000,000 observations
@@ -275,21 +265,15 @@ http://millionsongdataset.com/
 - The Songs dataset has 1,000,000 observations
 - There are some missing titles and releases
 - The primary/foreign key to merge these two datasets is song_id
-
-#### **Observations and Insights:**
 - The user_id and song_id are encrypted and can be encoded. However, this could cause problems if we were working on a real life data science business problem where user_id and song_id might need to be retained, or if later on in this analysis we wanted to encorporate other features from the 1 million songs data set online. Therefore, I will not encode these. 
 - As the data also contains users who have listened to very few songs and vice versa, filtering these records out of the data could 'get two birds with one stone' by decreasing the **cold start** problem, and decreasing the **computational resources** needed to analyze this large dataset.
 
 ==> NOTE <== <br>
 A dataset of size 2000000 rows x 7 columns can be quite large and may require a lot of computing resources to process. This can lead to long processing times and can make it difficult to train and evaluate your model efficiently.
-In order to address this issue, here we filter the dataset.
-To do this, we will set a threshold and filter out all users who have listened to less than 90 songs,
-and any songs that have been listen to less than 120 times
+In order to address this issue, I filtered the dataset to decrease its size and reduce the class imbalance, and then scaled the play_count feature.
 
-Now we will filter the dataset to decrease its size and reduce the class imbalance.
-
-### Scaling play_count Method 1:
-Because there are very few users who have listened to a song more than 5 times, we will set a threshold at 5 plays. We dont want to drop records with more than 5 plays because this is important information on users likes, but we can clip anything > 5 to 5.
+### Exploratory Data Analysis (EDA):
+Lets take a look at the distribution of 'play_count', the feature I use as a proxy for user 'rating':
 
 
     
@@ -298,34 +282,14 @@ Because there are very few users who have listened to a song more than 5 times, 
 
 
 
-
-
-    <seaborn.axisgrid.FacetGrid at 0x176ede110>
-
-
-
-
-    
-![png](assets/images/rs_files/recommender_system_23_1.png)
-    
-
-
-From this distribution plot, we can see that the number of songs played by each user (lets call it user interactions) is heavily right skewed. There are many (thousands) users who have only listened to a few songs, so any matrix we build from this data will be extremely sparse. We will attempt to reduce this by filtering out users who have less than a minimum number of total plays (therefore we have very little user preference data for them).
-
-
-
-
-    <seaborn.axisgrid.FacetGrid at 0x1dd2270a0>
-
-
-
+From this distribution plot, we can see that the number of songs played by each user (lets call it user interactions) is heavily right skewed. There are many (thousands) users who have only listened to a few songs, so any matrix I build from this data will be extremely sparse. Next I reduce the skew in the play_counts by filtering out users who have less than a minimum (I settled on 90) number of total plays. These are users that there is very little preference data for. Plotting the distriution of 'play_count' after filtering:
 
     
 ![png](assets/images/rs_files/recommender_system_26_1.png)
     
 
 
-    <class 'pandas.core.frame.DataFrame'>
+  <class 'pandas.core.frame.DataFrame'>
     RangeIndex: 1224498 entries, 0 to 1224497
     Data columns (total 7 columns):
      #   Column       Non-Null Count    Dtype 
@@ -341,23 +305,11 @@ From this distribution plot, we can see that the number of songs played by each 
     memory usage: 65.4+ MB
 
 
-Filtering out less active users has decreased the imbalance somewhat. We still have a heavily right skewed distribution plot, but the class imbalance has been reduced by a factor of 5 (y limit is 1200 instead of 7000). This has also decreased the size of the dataset to 1.2 million records down from 2 million. <br><br>
-Now lets continue to decrease the sparcity and imbalance of the data by filtering out any user/song records that have a play count less than 6. There are many more songs that users have only listened to 1 or a few times. We are trying to recommend highly rated songs, so we will get rid of these songs with low interactions and assume they are uninteracted with 'not-liked'.
+Filtering out less active users has decreased the imbalance somewhat. The distribution is still heavily right skewed in the above plot, but the class imbalance has been reduced by a factor of 5 (y limit is 1200 instead of 7000). This has also decreased the size of the dataset to 1.2 million records down from 2 million. <br><br>
+This is still not good enough, so I continue to decrease the sparcity and imbalance of the data by filtering out any user/song records that have a play count less than 6. There are many more songs that users have only listened to 1 or a few times. I want to recommend highly rated songs, so I am going to get rid of these songs with low interactions and assume they are uninteracted with 'not-liked'. 
 
 
-
-
-    <seaborn.axisgrid.FacetGrid at 0x1dd80b970>
-
-
-
-
-    
-![png](assets/images/rs_files/recommender_system_30_1.png)
-    
-
-
-    <class 'pandas.core.frame.DataFrame'>
+  <class 'pandas.core.frame.DataFrame'>
     RangeIndex: 185694 entries, 0 to 185693
     Data columns (total 7 columns):
      #   Column       Non-Null Count   Dtype 
@@ -373,15 +325,7 @@ Now lets continue to decrease the sparcity and imbalance of the data by filterin
     memory usage: 9.9+ MB
 
 
-We were able to dramatically reduce the size of the dataset with the previous step by 85%, this will speed up processing times for our models and also make the predictions more accurate by reducing the class imbalance. We can see in the above plot however, that there are still many songs that have only been played for a few users. This means that the matrix resulting from this data will still have a lot of sparcity. 
-<br><br>Lets filter out all songs that have less than 20 user interactions:
-
-
-
-
-    <seaborn.axisgrid.FacetGrid at 0x176f6bc70>
-
-
+This last filtering step dramatically reduced the size of the dataset by 85%, this will speed up processing times for the models and also make the predictions more accurate by reducing the class imbalance. Finally, I filter out all songs that have less than 20 user interactions:
 
 
     
@@ -389,20 +333,7 @@ We were able to dramatically reduce the size of the dataset with the previous st
     
 
 
-
-
-
-    <AxesSubplot: >
-
-
-
-
-    
-![png](assets/images/rs_files/recommender_system_35_1.png)
-    
-
-
-    <class 'pandas.core.frame.DataFrame'>
+  <class 'pandas.core.frame.DataFrame'>
     RangeIndex: 124147 entries, 0 to 124146
     Data columns (total 7 columns):
      #   Column       Non-Null Count   Dtype 
@@ -418,30 +349,18 @@ We were able to dramatically reduce the size of the dataset with the previous st
     memory usage: 6.6+ MB
 
 
-With these filtering steps, we have reduced the class imbalance, decreased the size of the dataset to make models and gridsearch more tracteable, and we have decreased the extreme sparcity of our resulting recommendations matrices. Now we apply a threshhold limit to further reduce class imblance and the play_count range, and then apply a min max scalar to standardize the play_counts as a proxy for a 1-10 rating.
+With these filtering steps, I have reduced the class imbalance, decreased the size of the dataset to make models and gridsearch more tracteable, and I have decreased the extreme sparcity of our resulting recommendations matrices. Now I am going to apply a threshhold limit to further reduce class imblance and the play_count range, and then apply a min max scalar to standardize the play_counts so I can effectively use them as a proxy for a 1-10 rating.
 
 ### Clipping and Scaling play_count:
-Because there are very few users who have listened to a song more than 25 times, we will set a threshold at 25 plays. We dont want to drop records with more than 5 plays because this is important information on users likes, but we can clip anything > 25 to 25. Then we will apply a MinMaxScalar function from the sklearn package to scale the playcounts from 1-10.
-
-
-
-
-    <seaborn.axisgrid.FacetGrid at 0x191a1b3a0>
-
-
-
+Because there are very few users who have listened to a song more than 25 times, I will set a threshold at 25 plays. I dont want to drop records with more than 25 plays because this is important information on users likes, So I will clip anything > 25 to 25 and then apply a MinMaxScalar function from the sklearn package to scale the playcounts from 1-10.<br>
+Distribution plot after filtering:
 
     
 ![png](assets/images/rs_files/recommender_system_41_1.png)
     
 
 
-
-
-
-    <seaborn.axisgrid.FacetGrid at 0x186305d20>
-
-
+Distribution plot after scaling:
 
 
     
@@ -449,7 +368,7 @@ Because there are very few users who have listened to a song more than 25 times,
     
 
 
-Our final play_counts, filtered, clipped and scaled look pretty good. The class imbalance between the left side of the X axis and the higher play_counts has been reduced, The play_counts are scaled from 1-10, and we have kept the records containing the highest ratings as 10's.
+My final play_counts, filtered, clipped, and scaled look pretty good. The class imbalance between the left side of the X axis and the higher play_counts has been reduced, The play_counts are scaled from 1-10, and I have kept the records containing the highest ratings as 10's.
 
 
 
@@ -458,11 +377,11 @@ Our final play_counts, filtered, clipped and scaled look pretty good. The class 
 
 
 
-The final dataset has 121,900 records. This is a much more maneagable number of records for training and testing models. We want to check tht we did not drop too many users or songs. After previous iterations testing the filtering, I had dropped over 90% of the songs so the final recommendations that were being made were not diverse and nearly the same for every user. Lets take a look at this and some other parts of the dataset in Exploratory Data Analysis...
+The final dataset has 121,900 records. This is a much more maneagable number of records for training and testing models. After previous iterations of testing the filtering, I had dropped over 90% of the songs so the final recommendations that were being made were not diverse and nearly the same for every user. So Im going to continue EDA and take a look at the filtered dataset to make sure the user/song diversity is still good...
 
-## **Exploratory Data Analysis**
+## **Exploratory Data Analysis Continued...**
 
-### **Let's check the total number of unique users, songs, artists in the data**
+### **Checking the total number of unique users, songs, artists in the data**
 
 Total number of unique user id
 
