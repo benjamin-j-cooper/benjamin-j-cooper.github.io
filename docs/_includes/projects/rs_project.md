@@ -1,11 +1,12 @@
 
-## **Problem Definition**
-
 ### **The Context:**
 
         With the advent of smartphones and the consumer economy, there has been a revolution in the ways that people consume products and content. At the same time, digital music and digital music distribution platforms have become some of the most widely accessible and highly consumed product markets in the world. Yet with this deluge of digital music content comes a challenge: how do users find new content that they enjoy, and how do digital music platforms enable music discovery by users? These challenges are exacerbated by the fact that in the modern fast-paced world, people are often time or attention limited, there are other platforms competing for user attention, and digital content-based company's revenue often relies on the time consumers spend on, or interact with, its platform. These companies need to be able to figure out what kind of content is needed in order to increase customer time spent on their platform, the ammount of interaction had with their platform, and the overall satisfaction with a users experience on the platform. The key challenge for companies is in figuring out what kind of content their users are most likely to consume. 
 
         Spotify is one such music content provider with a huge market base across the world. With the ever-increasing volume of streaming music becoming available, finding new music of interest has become a tedious task in and of itself. Spotify has grown significantly in the market because of its ability to make highly personalized music recommendations to each and every user of its platform based on a huge preference database gathered over time - millions of customers and billions of songs. This is done by using smart recommendation systems that can recommend songs based on users’ likes/dislikes, incorporating both content-based and latent features for song recommendations. However, the recommendation system used by Spotify and its parameter settings have remained a proprietary, closely-guarded secret. Here, I build a recommendation system to provide a top 10 of personalized song recommendations to a user that the user is most likely to enjoy/like/interact-with based on that users personal musical preferences.
+
+==> NOTE <== <br>
+For the full code check out the Github Link at the bottom of the page
 
 ### **The objective:**
 
@@ -44,16 +45,16 @@ __song_data__
 
 
 
-    <class 'pandas.core.frame.DataFrame'>
-    RangeIndex: 2000000 entries, 0 to 1999999
-    Data columns (total 3 columns):
-      #   Column      Dtype 
-    ---  ------      ----- 
-      0   user_id     object
-      1   song_id     object
-      2   play_count  int64 
-    dtypes: int64(1), object(2)
-    memory usage: 45.8+ MB
+<class 'pandas.core.frame.DataFrame'>
+  RangeIndex: 2000000 entries, 0 to 1999999
+  Data columns (total 3 columns):
+    #   Column      Dtype 
+  ---  ------      ----- 
+    0   user_id     object
+    1   song_id     object
+    2   play_count  int64 
+  dtypes: int64(1), object(2)
+  memory usage: 45.8+ MB
 
 
 
@@ -135,6 +136,8 @@ __song_data__
 
 
 
+
+
 __count_data__
 
 - user _id - A unique id given to the user
@@ -145,18 +148,18 @@ __count_data__
 
 
 
-    <class 'pandas.core.frame.DataFrame'>
-    RangeIndex: 1000000 entries, 0 to 999999
-    Data columns (total 5 columns):
-     #   Column       Non-Null Count    Dtype 
-    ---  ------       --------------    ----- 
-     0   song_id      1000000 non-null  object
-     1   title        999985 non-null   object
-     2   release      999995 non-null   object
-     3   artist_name  1000000 non-null  object
-     4   year         1000000 non-null  int64 
-    dtypes: int64(1), object(4)
-    memory usage: 38.1+ MB
+<class 'pandas.core.frame.DataFrame'>
+  RangeIndex: 1000000 entries, 0 to 999999
+  Data columns (total 5 columns):
+    #   Column       Non-Null Count    Dtype 
+  ---  ------       --------------    ----- 
+    0   song_id      1000000 non-null  object
+    1   title        999985 non-null   object
+    2   release      999995 non-null   object
+    3   artist_name  1000000 non-null  object
+    4   year         1000000 non-null  int64 
+  dtypes: int64(1), object(4)
+  memory usage: 38.1+ MB
 
 
 
@@ -269,7 +272,7 @@ __count_data__
 - As the data also contains users who have listened to very few songs and vice versa, filtering these records out of the data could 'get two birds with one stone' by decreasing the **cold start** problem, and decreasing the **computational resources** needed to analyze this large dataset.
 
 ==> NOTE <== <br>
-A dataset of size 2000000 rows x 7 columns can be quite large and may require a lot of computing resources to process. This can lead to long processing times and can make it difficult to train and evaluate your model efficiently.
+- A dataset of size 2000000 rows x 7 columns can be quite large and may require a lot of computing resources to process. This can lead to long processing times and can make it difficult to train and evaluate your model efficiently.
 In order to address this issue, I filtered the dataset to decrease its size and reduce the class imbalance, and then scaled the play_count feature.
 
 ### Exploratory Data Analysis (EDA):
@@ -289,40 +292,40 @@ From this distribution plot, we can see that the number of songs played by each 
     
 
 
-  <class 'pandas.core.frame.DataFrame'>
-    RangeIndex: 1224498 entries, 0 to 1224497
-    Data columns (total 7 columns):
-     #   Column       Non-Null Count    Dtype 
-    ---  ------       --------------    ----- 
-     0   user_id      1224498 non-null  object
-     1   song_id      1224498 non-null  object
-     2   title        1224498 non-null  object
-     3   release      1224498 non-null  object
-     4   artist_name  1224498 non-null  object
-     5   year         1224498 non-null  int64 
-     6   play_count   1224498 non-null  int64 
-    dtypes: int64(2), object(5)
-    memory usage: 65.4+ MB
+<class 'pandas.core.frame.DataFrame'>
+  RangeIndex: 1224498 entries, 0 to 1224497
+  Data columns (total 7 columns):
+    #   Column       Non-Null Count    Dtype 
+  ---  ------       --------------    ----- 
+    0   user_id      1224498 non-null  object
+    1   song_id      1224498 non-null  object
+    2   title        1224498 non-null  object
+    3   release      1224498 non-null  object
+    4   artist_name  1224498 non-null  object
+    5   year         1224498 non-null  int64 
+    6   play_count   1224498 non-null  int64 
+  dtypes: int64(2), object(5)
+  memory usage: 65.4+ MB
 
 
 Filtering out less active users has decreased the imbalance somewhat. The distribution is still heavily right skewed in the above plot, but the class imbalance has been reduced by a factor of 5 (y limit is 1200 instead of 7000). This has also decreased the size of the dataset to 1.2 million records down from 2 million. <br><br>
 This is still not good enough, so I continue to decrease the sparcity and imbalance of the data by filtering out any user/song records that have a play count less than 6. There are many more songs that users have only listened to 1 or a few times. I want to recommend highly rated songs, so I am going to get rid of these songs with low interactions and assume they are uninteracted with 'not-liked'. 
 
 
-  <class 'pandas.core.frame.DataFrame'>
-    RangeIndex: 185694 entries, 0 to 185693
-    Data columns (total 7 columns):
-     #   Column       Non-Null Count   Dtype 
-    ---  ------       --------------   ----- 
-     0   user_id      185694 non-null  object
-     1   song_id      185694 non-null  object
-     2   title        185694 non-null  object
-     3   release      185694 non-null  object
-     4   artist_name  185694 non-null  object
-     5   year         185694 non-null  int64 
-     6   play_count   185694 non-null  int64 
-    dtypes: int64(2), object(5)
-    memory usage: 9.9+ MB
+<class 'pandas.core.frame.DataFrame'>
+  RangeIndex: 185694 entries, 0 to 185693
+  Data columns (total 7 columns):
+    #   Column       Non-Null Count   Dtype 
+  ---  ------       --------------   ----- 
+    0   user_id      185694 non-null  object
+    1   song_id      185694 non-null  object
+    2   title        185694 non-null  object
+    3   release      185694 non-null  object
+    4   artist_name  185694 non-null  object
+    5   year         185694 non-null  int64 
+    6   play_count   185694 non-null  int64 
+  dtypes: int64(2), object(5)
+  memory usage: 9.9+ MB
 
 
 This last filtering step dramatically reduced the size of the dataset by 85%, this will speed up processing times for the models and also make the predictions more accurate by reducing the class imbalance. Finally, I filter out all songs that have less than 20 user interactions:
@@ -333,20 +336,20 @@ This last filtering step dramatically reduced the size of the dataset by 85%, th
     
 
 
-  <class 'pandas.core.frame.DataFrame'>
-    RangeIndex: 124147 entries, 0 to 124146
-    Data columns (total 7 columns):
-     #   Column       Non-Null Count   Dtype 
-    ---  ------       --------------   ----- 
-     0   user_id      124147 non-null  object
-     1   song_id      124147 non-null  object
-     2   title        124147 non-null  object
-     3   release      124147 non-null  object
-     4   artist_name  124147 non-null  object
-     5   year         124147 non-null  int64 
-     6   play_count   124147 non-null  int64 
-    dtypes: int64(2), object(5)
-    memory usage: 6.6+ MB
+<class 'pandas.core.frame.DataFrame'>
+  RangeIndex: 124147 entries, 0 to 124146
+  Data columns (total 7 columns):
+    #   Column       Non-Null Count   Dtype 
+  ---  ------       --------------   ----- 
+    0   user_id      124147 non-null  object
+    1   song_id      124147 non-null  object
+    2   title        124147 non-null  object
+    3   release      124147 non-null  object
+    4   artist_name  124147 non-null  object
+    5   year         124147 non-null  int64 
+    6   play_count   124147 non-null  int64 
+  dtypes: int64(2), object(5)
+  memory usage: 6.6+ MB
 
 
 With these filtering steps, I have reduced the class imbalance, decreased the size of the dataset to make models and gridsearch more tracteable, and I have decreased the extreme sparcity of our resulting recommendations matrices. Now I am going to apply a threshhold limit to further reduce class imblance and the play_count range, and then apply a min max scalar to standardize the play_counts so I can effectively use them as a proxy for a 1-10 rating.
@@ -662,20 +665,14 @@ Songs played in a year
 - We can clearly see that there in an increasing trend from 1960-2008 in the number of songs released
 - This makes sense as there are more people, more artists, and musical equiptment, recording equiptment, and streaming platforms have made it easier to produce music
 
-Now that we have explored the data, let's apply different algorithms to build recommendation systems.
+Now I apply different algorithms to build a recommendation system.
 
 ## Building a baseline popularity-based recommendation systems
 
 ### **Popularity-Based Recommendation Systems**
 
-Let's take the count and sum of play counts of the songs and build the popularity recommendation systems based on the sum of play counts.
-
-#### Function for Rank Based Recommendation System
-
-Let's create a function to find the top n songs for a recommendation based on the average play count of song. We will also add a threshold for a minimum number of playcounts for a song to be considered for recommendation.
-
-
-
+In this basic recommendation system, I take the count and sum of play counts of the songs and build the popularity recommendation system based on the sum of play counts.
+(For the full code check out the Github Link at the bottom of the page)
 
 <div>
 
