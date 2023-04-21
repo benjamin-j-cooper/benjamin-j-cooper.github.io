@@ -667,12 +667,10 @@ Songs played in a year
 
 Now I apply different algorithms to build a recommendation system.
 
-## Building a baseline popularity-based recommendation systems
-
-### **Popularity-Based Recommendation Systems**
+### Building a baseline popularity-based recommendation system
 
 In this basic recommendation system, I take the count and sum of play counts of the songs and build the popularity recommendation system based on the sum of play counts.
-(For the full code check out the Github Link at the bottom of the page)
+(For the full code check out the Github Link at the bottom of the page). Here is the output after running the popularity-based RS on the filtered dataset:
 
 <div>
 
@@ -741,27 +739,12 @@ In this basic recommendation system, I take the count and sum of play counts of 
 
 
 
-# Part I: Collaborative Filtering, Matrix Factorization, and Clustering
+### Collaborative Filtering, Matrix Factorization, and Clustering based recommendation sytems
 
-### Some useful functions
+Before running the following recommendation systems, I developed several functions for calculating metrics to evaluate the models. The metrics I used are Root Mean Squared Error, Mean Average Error, Precision, Recall, and F1.
+I then split the data into a train and test set (Link to full code is at the bottom of the page). Also, to build the user-user-similarity-based and subsequent models I used the "surprise" library from Python.
 
-**Think About It:** Which metric should be used for this problem to compare different models?
-
-Function to calculate precision@k and recall@k, RMSE, and F1_Score@k to evaluate the model performance:
-
-Function to get top n recommendations for a user based on model predictions:
-
-Function to **tune recommendations by song popularity** - corrects the predicted interaction with a song by applying a weight to increase the 'rating' of songs that are in general more popular among users:
-
-Function to compare metrics from different models:
-
-Function to return predictions for a user for 3 songs:
-
-### Split the Data into Train and Test
-
-### **User User Similarity-Based Collaborative Filtering**
-
-To build the user-user-similarity-based and subsequent models we will use the "surprise" library.
+#### **User User Similarity-Based Collaborative Filtering Metrics**
 
     RMSE: 3.1852
     MAE:  2.5755
@@ -776,17 +759,10 @@ For the untuned User-user similarity-based model,
 - The f1 score is 0.72
 - The average popularity of recommended songs is 24.3
 
-    predictions using <surprise.prediction_algorithms.knns.KNNBasic object at 0x18512cfa0> for user 6ccd111af9b4baa497aacd6d1863cbf5a141acc6:
-    *************************
-    prediction for Red Dirt Road by Brooks and Dunn
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SODBSUF12A8C141975 r_ui = 10.00   est = 3.97   {'actual_k': 21, 'was_impossible': False}
-    *************************
-    predictions for Till I collapse by Eminem and Nate Dogg
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SOBPKPW12A6701E8F9 r_ui = 1.00   est = 3.74   {'actual_k': 40, 'was_impossible': False}
-    *************************
-    prediction for SOTTGXB12A6701FA0B by Phoenix (other pheonix songs are 7.6
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SOTTGXB12A6701FA0B r_ui = None   est = 3.45   {'actual_k': 21, 'was_impossible': False}
-
+**predictions using knns.KNNBasic for user 6ccd111af9b4baa497aacd6d1863cbf5a141acc6:**
+- prediction for Red Dirt Road by Brooks and Dunn: r_ui = 10.00   est = 3.97 
+- predictions for Till I collapse by Eminem and Nate Dogg: r_ui = 1.00   est = 3.74 
+- prediction for SOTTGXB12A6701FA0B by Phoenix (other pheonix songs are 7.6): r_ui = None   est = 3.45 
 
 **Observations and Insights:**
 - For the song the user has seen with a rating of 10, the model predicted a rating of 3.97
@@ -796,7 +772,7 @@ For the untuned User-user similarity-based model,
 - The user-user model isnt predicting ratings very well
 - All three songs have similar predicted 'ratings' for this user
 
-Now, let's try to tune the model and see if we can improve the model performance.
+Next, I tuned the model to try to improve the model performance. The metrics after tuning are:
 
     2.8805243519619927
     {'k': 50, 'min_k': 9, 'sim_options': {'name': 'msd', 'user_based': True}}
@@ -815,16 +791,11 @@ After tuning the user-user model,
 - The f1 score has increased
 - The popularity of recommended songs has increased
 
-    predictions using <surprise.prediction_algorithms.knns.KNNBasic object at 0x18b1b8730> for user 6ccd111af9b4baa497aacd6d1863cbf5a141acc6:
-    *************************
-    prediction for Red Dirt Road by Brooks and Dunn
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SODBSUF12A8C141975 r_ui = 10.00   est = 8.95   {'actual_k': 21, 'was_impossible': False}
-    *************************
-    predictions for Till I collapse by Eminem and Nate Dogg
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SOBPKPW12A6701E8F9 r_ui = 1.00   est = 3.14   {'actual_k': 40, 'was_impossible': False}
-    *************************
-    prediction for SOTTGXB12A6701FA0B by Phoenix (other pheonix songs are 7.6
-    user: 6d625c6557df84b60d90426c0116138b617b9449 item: SOTTGXB12A6701FA0B r_ui = None   est = 3.38   {'actual_k': 21, 'was_impossible': False}
+
+**predictions using knns.KNNBasic tuned for user 6ccd111af9b4baa497aacd6d1863cbf5a141acc6:**
+- prediction for Red Dirt Road by Brooks and Dunn: r_ui = 10.00   est = 8.95
+- predictions for Till I collapse by Eminem and Nate Dogg: r_ui = 1.00   est = 3.14
+- prediction for SOTTGXB12A6701FA0B by Phoenix (other pheonix songs are 7.6): r_ui = None   est = 3.38
 
 
 **Observations and Insights:**
