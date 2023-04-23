@@ -1130,7 +1130,7 @@ To tune the SVD model, first I run a factor checking function that plots the RMS
     
 
 
-According to the figure, there is a decreasing trend of better performance with higher k. The lowest RMSE is achieved when k is 8. However, it is worth mentioning that k = 52 and >84 are also good. The result suggests a range of values which can be used in GridSearchCV()for parameter tunning. Next I ran GridSearchCV to find the optimal parameter settings. The parameter settings for the model that reduced RMSE the most are:
+According to the figure, there is a decreasing trend of better performance with higher k. The lowest RMSE is achieved when k is 80. However, it is worth mentioning that k = 52 and >84 are also good. The result suggests a range of values which can be used in GridSearchCV()for parameter tunning. Next I ran GridSearchCV to find the optimal parameter settings. The parameter settings for the model that reduced RMSE the most are:
 
     2.7097656150739744
     {'n_epochs': 30, 'lr_all': 0.01, 'reg_all': 0.4, 'n_factors': 80}
