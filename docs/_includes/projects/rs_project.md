@@ -754,6 +754,13 @@ Here is the output after running the popularity-based RS on the filtered dataset
 ### Collaborative Filtering, Matrix Factorization, and Clustering based recommendation sytems
 
 Before running the following recommendation systems, I developed several functions for calculating metrics to evaluate the models. The metrics I used are Root Mean Squared Error, Mean Average Error, Precision, Recall, and F1.
+
+
+
+<script src="https://gist.github.com/benjamin-j-cooper/3db000dfbf39f94b4afe5ea577e285f5.js"></script>
+
+
+
 I then split the data into a train and test set (Link to full code is at the bottom of the page). Also, to build the user-user-similarity-based and subsequent models I used the "surprise" library from Python.
 
 #### **User User Similarity-Based Collaborative Filtering Metrics**
