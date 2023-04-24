@@ -4,10 +4,6 @@ title: Classification
 description: This is a Classification problem using Random forest and XGBoost to predict customer satisfaction in the Shinkansen Bullet Train dataset
 ---
 
-<div>
-    <script src="https://gist.github.com/benjamin-j-cooper/de5bd92f9523060ea8aeec70a712cce9.js"></script>
-</div>
-
 {% gist benjamin-j-cooper/de5bd92f9523060ea8aeec70a712cce9 %}
 
 {% include projects/rf_project.md %}
