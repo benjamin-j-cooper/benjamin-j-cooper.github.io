@@ -760,10 +760,23 @@ Before running the following recommendation systems, I developed several functio
 <script src="https://gist.github.com/benjamin-j-cooper/3db000dfbf39f94b4afe5ea577e285f5.js"></script>
 
 
+<script src="https://gist.github.com/benjamin-j-cooper/4750aaeaae7661f5a5ac16fe72216773.js"></script>
+
+
+<script src="https://gist.github.com/benjamin-j-cooper/13375250f5ca58f79679578c2a9e9fe5.js"></script>
+
 
 I then split the data into a train and test set (Link to full code is at the bottom of the page). Also, to build the user-user-similarity-based and subsequent models I used the "surprise" library from Python.
 
 #### **User User Similarity-Based Collaborative Filtering Metrics**
+
+The code for implementing the user-user similarity matrix with base settings is:
+
+
+<script src="https://gist.github.com/benjamin-j-cooper/935e3549ec7134a9901a1836566800b6.js"></script>
+
+
+Result:
 
     RMSE: 3.1852
     MAE:  2.5755
@@ -791,7 +804,13 @@ predictions using knn.KNNBasic for user 6ccd111af9b4baa497aacd6d1863cbf5a141acc6
 - The user-user model isnt predicting ratings very well
 - All three songs have similar predicted 'ratings' for this user
 
-Next, I tuned the model to try to improve the model performance. The metrics after tuning are:
+Next, I tuned the model using GridSearchCV to try to improve the model performance. 
+
+
+<script src="https://gist.github.com/benjamin-j-cooper/5e8fb02b0f847600d410fb56d0852b37.js"></script>
+
+
+The metrics after tuning are:
 
     2.8805243519619927
     {'k': 50, 'min_k': 9, 'sim_options': {'name': 'msd', 'user_based': True}}
@@ -1138,7 +1157,13 @@ predictions using SVD tuned for user 6ccd111af9b4baa497aacd6d1863cbf5a141acc6:
 
 #### Improving matrix factorization based recommendation system by tuning its hyperparameters
 
-To tune the SVD model, first I run a factor checking function that plots the RMSE based on a range of latent features. Here is the plot for this data run for 100 features:
+To tune the SVD model, first I run a factor checking function that plots the RMSE based on a range of latent features. 
+
+
+<script src="https://gist.github.com/benjamin-j-cooper/d0533b9031797192afcdd43261b8829c.js"></script>
+
+
+Here is the plot for this data run for 100 features:
 
 
     
@@ -1426,7 +1451,7 @@ Next, I run GridsearchCV on the clustering-based recommendation system to tune i
     {'n_cltr_u': 3, 'n_cltr_i': 3, 'n_epochs': 40}
 
 
-**The model metrics after rerunning coclusteringwith the tuned hyperparamters**
+**The model metrics after rerunning coclustering with the tuned hyperparamters**
 
     RMSE: 2.9613
     MAE:  2.2139
@@ -1557,7 +1582,13 @@ The final, weighted, recommendations from the tuned coclustering algorithm for u
 
 ### Content Based Recommendation System
 
-So far I have only used the play_count of songs to find recommendations but there are other information/features on songs as well, and these features can be used to increase the personalization of the recommendation system. For example, we can use the artist name and album title to recommend songs to users from artists/albums they like but songs they have not heard yet. We can also include the year the song was released and recommend music from the same time period. Before Running any of the content based models, I preprocessed the text data by tolkenizing it with natural language processing methods that come standard in the NLTK package. First, I coded the year column into text:
+So far I have only used the play_count of songs to find recommendations but there are other information/features on songs as well, and these features can be used to increase the personalization of the recommendation system. For example, we can use the artist name and album title to recommend songs to users from artists/albums they like but songs they have not heard yet. We can also include the year the song was released and recommend music from the same time period. Here are the main functions I used for the content model:
+
+
+<script src="https://gist.github.com/benjamin-j-cooper/ab20e9c29b12c86e354f77cfefdc036e.js"></script>
+
+
+Before Running any of the content based models, I preprocessed the text data by tolkenizing it with natural language processing methods that come standard in the NLTK package. First, I coded the year column into text:
 
 
 <div>
@@ -1669,7 +1700,13 @@ Then I combined all of the text features into a single column 'text':
 </div>
 
 
-I then calculated a tf-idf matrix and calculated the cosign similarity. The Recommendations using this method are:
+I then calculated a tf-idf matrix and calculated the cosign similarity. 
+
+
+<script src="https://gist.github.com/benjamin-j-cooper/757aa09d34a886cde387d1ed4635b3fe.js"></script>
+
+
+The Recommendations using this method are:
 
 
 <div>
@@ -1783,7 +1820,17 @@ In my hybrid system, I fit models and make predictions by combing two of the pre
 - SVD (default settings)
 - User-User collaborative Filtering (tuned)<br>
 
+
+
+<script src="https://gist.github.com/benjamin-j-cooper/7c018c0c143dac2f2b86e263bdeb698d.js"></script>
+
+
+
 I chose these two models because both had the best F1_scores metrics, both had fairly good predictions, and both recommended markedly different songs. I then add in a subset of recommendations from the content-based filtering method to increase the 'familiarity' for the user of the recommended songs/artists. This will hopefully provide a highly personalized recommendation for a user with a balance of new songs and familiar artists to give choices based on potential dynamic user preferences. I also evaluated the performance of different weight combinations using the hold-out set. For example, we can try different combinations of wA and wB for the SVD and User-User model combination, ranging from (0.1, 0.9) to (0.9, 0.1), and compute their respective RMSE scores:
+
+
+<script src="https://gist.github.com/benjamin-j-cooper/0eb3455fc8709ac6fcbe5b3d507f409f.js"></script>
+
 
     RMSE: 2.7976
     MAE:  2.2302
