@@ -675,7 +675,11 @@ Now I apply different algorithms to build a recommendation system.
 In this basic recommendation system, I take the count and sum of play counts of the songs and build the popularity recommendation system based on the sum of play counts (For the full code check out the Github Link at the bottom of the page). The rank based recommender function is:
 
 
+
+
 <script src="https://gist.github.com/benjamin-j-cooper/de5bd92f9523060ea8aeec70a712cce9.js"></script>
+
+
 
 
 Here is the output after running the popularity-based RS on the filtered dataset:
