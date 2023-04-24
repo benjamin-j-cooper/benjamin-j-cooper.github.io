@@ -18,3 +18,5 @@ layout: default
 
 
 ##### __Deep Learning:__
+
+<script src="https://gist.github.com/benjamin-j-cooper/de5bd92f9523060ea8aeec70a712cce9.js"></script>

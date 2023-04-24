@@ -9,8 +9,6 @@ description: This is a Classification problem using Random forest and XGBoost to
     <script src="https://gist.github.com/benjamin-j-cooper/de5bd92f9523060ea8aeec70a712cce9.js"></script>
 </div>
 
-<script src="https://gist.github.com/benjamin-j-cooper/de5bd92f9523060ea8aeec70a712cce9.js"></script>
-
 {% include projects/rf_project.md %}
 
 <div class="btn-container flex-parent jc-center">
