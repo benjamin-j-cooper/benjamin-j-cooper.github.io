@@ -40,7 +40,7 @@ github_username:  benjamin-j-cooper
 show_downloads: false
 # Google Analytics
 google_analytics: G-TR9Q5NM2DX
-markdown: GFM
+# markdown: GFM
 # Build settings
 theme: jekyll-theme-cayman
 plugins:
