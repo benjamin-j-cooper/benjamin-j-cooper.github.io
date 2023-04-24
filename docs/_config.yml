@@ -45,6 +45,7 @@ markdown: GFM
 theme: jekyll-theme-cayman
 plugins:
   - jekyll-feed
+safe: false
 
 # Exclude from processing.
 # The following items will not be processed, by default.
