@@ -1,7 +1,7 @@
 ---
 layout: default
-title: Random Forest
-description: This is a Random forest analysis of...
+title: Classification
+description: This is a Classification problem using Random forest and XGBoost to predict customer satisfaction in the Shinkansen Bullet Train dataset
 ---
 
 
