@@ -17,7 +17,7 @@ The goal of the problem was to predict whether a passenger was satisfied or not 
 
 The problem consists of 2 separate datasets: Travel data & Survey data. Travel data has information related to passengers and attributes related to the Shinkansen train, in which they traveled. The survey data is aggregated data of surveys indicating the post-service experience. You are expected to treat both these datasets as raw data and perform any necessary data cleaning/validation steps as required.
 
-The data has been split into two groups and provided in the Dataset folder. The folder contains both train and test data separately.
+The data has been split into train and test data previously.
 
 Train_Data
 Test_Data
@@ -28,7 +28,7 @@ Test_Data
 
 **Evaluation metric:**
 
-- Accuracy Score: The evaluation metric is simply the percentage of predictions made by the model that turned out to be correct. This is also called the accuracy of the model. It will be calculated as the total number of correct predictions (True Positives + True Negatives) divided by the total number of observations in the dataset (In other words, the best possible accuracy is 100% (or 1) and the worst possible accuracy 0%). 
+- The primary evaluation metric that I used and that was required by the competition was Accuracy Score. The accuracy socre is simply the percentage of predictions made by the model that turned out to be correct (the accuracy of the model). It was calculated as the total number of correct predictions (True Positives + True Negatives) divided by the total number of observations in the dataset (In other words, the best possible accuracy is 100% (or 1) and the worst possible accuracy 0%). 
 
 ### **Importing Libraries and the Dataset**
 

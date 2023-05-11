@@ -1,5 +1,5 @@
 # Forecasting US deaths per-day from Covid-19
-### Without the rapid release of the Covid-19 vaccines and boosters
+### What would have happened without the rapid release of the Covid-19 vaccines and boosters?
 
 Time Series are a common task in data science. The possibilities for applying time series analysis to real world situations are endless. Think of all the different aspects of your life or business and the chances are if you think of them in terms of time, or occuring over a period of time, that they could be turned into data and analyzed with a time series analysis. Time series analysis, however can be challenging: making predictings into the future is difficult because no one can exactly predict the future. For one, unforeseen events or events with unpredictable outcomes may occur that could effect the dependent variable we are intersted in predicting. <br><br>
 
@@ -7,89 +7,9 @@ Another way we can look at this is to ask, "what would have happened if X did no
 
 The approach I took was to break the US data into logical segments and analyze each segment independently. For example, the first segment I delineated, spanned the time from the first recorded covid case to the release of the first booster. With the first segment, the training and testing data were split on the date of the realease of the first vaccine. I then forecasted daily death rates for the testing dataset based on the training data (the data before the vaccine was released) so the model would not take into account the impact of the vaccine on death rates. I repeated this process for the booster.<br><br>
 
-Time series trend, seasonality, white noise
+Time series analysis has a number of components that are somewhat unique to time series data. These are: trend, seasonality. There is also a concept called 'stationarity' which basically means the data is free of the trend and seasonality. The steps for performing time series analysis are first to preprocess the data, perform exploratory data analysis, split the data into train and test sets, check for stationarity (Augmented Dickey-Fuller Test), remove stationarity (differencing, detrending, deseasoning and or log transformation), build models (AR, MA, ARMA, ARIMA), and forecast.<br><br>
 
-models used
-    AR
-    ARMA
-    ARIMA
-
-The metrics I used to evaluate the models 
-    moving average
-    Root mean squared error
-
-
-
-
-<div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Total</th>
-      <th>Percent</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Province/State</th>
-      <td>198</td>
-      <td>0.685121</td>
-    </tr>
-    <tr>
-      <th>Lat</th>
-      <td>2</td>
-      <td>0.006920</td>
-    </tr>
-    <tr>
-      <th>Long</th>
-      <td>2</td>
-      <td>0.006920</td>
-    </tr>
-    <tr>
-      <th>Country/Region</th>
-      <td>0</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>2/4/22</th>
-      <td>0</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>2/3/21</th>
-      <td>0</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>2/4/21</th>
-      <td>0</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>2/5/21</th>
-      <td>0</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>2/6/21</th>
-      <td>0</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>2/15/23</th>
-      <td>0</td>
-      <td>0.000000</td>
-    </tr>
-  </tbody>
-</table>
-<p>1125 rows × 2 columns</p>
-</div>
+After download the John's Hopkins global Covid-19 death count dataset from kaggle (https://www.kaggle.com/datasets/antgoldbloom/covid19-data-from-john-hopkins-university), I began by checking for missing data. 
 
 
 
@@ -111,10 +31,7 @@ The metrics I used to evaluate the models
 
 
 
-
-
-    <AxesSubplot: xlabel='Country/Region', ylabel='Country/Region'>
-
+What is clear from the table above is that the data recorded for some countries has state/province information, but for other countries there is none. I am not interested in the states provincial feature at this time so I will drop it. Next I group the data by country using the pandas dataframe groupby() method and plot a correlation heatmap of death counts for the top 20 countries with the highest death counts.
 
 
 
@@ -122,41 +39,35 @@ The metrics I used to evaluate the models
 ![png](assets/images/tsa_files/covid19_analysis_clean_13_1.png)
     
 
+One important thing to note about the covid 19 data is that not all countries followed the same reporting standards for infections or deaths. Therefor it is important to keep in mind that some countries that may not be in the top 20 in this dataset may have had underinflated death count data. Interestingly, int he correlation heatmap we can see that there are some lighter groups of blocks indicating correlation between the daily death counts between some countries. For example Brazil and India, or Columbia, and Argentina,a nd finally the UK, Italy, Germany, and France. The latter two groups make perfect sense as these countries are geographically, culturally, and economically more closely related. Next, I extracted the US data from the global dataset. The remainder of the analysis will focus just on the US dataset.
+
 
 ### US
 
 
+plotting the cummulative US death counts from the start of the pandemic, we can see there are changes in the death rate over time:
     
 ![png](assets/images/tsa_files/covid19_analysis_clean_17_0.png)
     
 
+To get a better picture of the these changes in death rate, I transformed the data into non-cumulative data using the built in pandas shift() method to the subtract the previous day from each days death count. 
 
-### US non- cummulative
+### US non-cummulative
 
-
-
-
-    <matplotlib.legend.Legend at 0x4b42c5d50>
-
-
-
+Here is the resulting non-cumulative data plotted from the start of the pandemic, with significant vaccination developments included as vertical dashed lines:
 
     
 ![png](assets/images/tsa_files/covid19_analysis_clean_21_1.png)
     
 
+The vaccination events appear to be correlated with unpredictable drops in the covid death rate. To explore this further, I break the dataset into smaller windows of analysis. The first window is from the start of the pandemic to the release of the 1st booster. The training and testing data are split based on the date of the release of the 1st vaccines. I will then forecast the predicted death rate of the testing dataset with an ARIMA model. 
 
 ### Forecasting the predicted covid deaths without first vaccine
 
-
+First, lets take a look at the trend and seasonlity of the training set...
     
 ![png](assets/images/tsa_files/covid19_analysis_clean_29_0.png)
     
-
-
-
-    <Figure size 800x400 with 0 Axes>
-
 
 
     
