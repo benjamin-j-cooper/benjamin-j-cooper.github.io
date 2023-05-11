@@ -8,5 +8,5 @@ description: An exploratory analysis of Covid 19 death and vaccination data
 
 <div class="btn-container flex-parent jc-center">
     <span><a href="#page-top" class="btn margin-right text-uppercase">Top of Page</a></span>
-    <span><a href="https://gist.github.com/benjamin-j-cooper/199066be1182152361cadcaee8f05a5b" class="btn text-uppercase" target="_blank">Raw Code</a></span>
+    <span><a href="https://github.com/benjamin-j-cooper/covid-19_timeseries_analysis.git" class="btn text-uppercase" target="_blank">Raw Code</a></span>
 </div>
