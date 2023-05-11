@@ -120,4 +120,6 @@ This is rather high. Finally, I plot the forecast for the daily covid death rate
 
     
 ![png](assets/images/tsa_files/covid19_analysis_clean_32_0.png)
-    
+  
+
+according to the ARIMA model, the death rate would have continued to increase in 2021 given the training data prior to 01-01-2021. From an epedemiological standpoint, this model does not take into account other confounding variables that may have had an effect of the acualy death rates in 2021 that could have lead to the sharp decrease we see in the testing dataset. One possible cause of the decrease in actual deaths we see in early 2021 could have been due to the realse of the mRNA vaccines. This brief time series analysis of the covid-19 death data in the US is one approach for forecasting what could have happened had the vaccines not been released.
