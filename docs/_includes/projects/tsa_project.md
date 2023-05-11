@@ -6,7 +6,7 @@ Another way we can look at this is to ask, "what would have happened if X did no
 
 The approach I took was to break the US data into logical segments and analyze each segment independently. For example, the first segment I delineated, spanned the time from the first recorded covid case to the release of the first booster. With the first segment, the training and testing data were split on the date of the realease of the first vaccine. I then forecasted daily death rates for the testing dataset based on the training data (the data before the vaccine was released) so the model would not take into account the impact of the vaccine on death rates. I repeated this process for the booster.<br><br>
 
-Time series analysis has a number of components that are somewhat unique to time series data. These are: trend and seasonality. There is also a concept called 'stationarity' which basically means the data is free of the trend and seasonality. The steps for performing time series analysis are first to preprocess the data, perform exploratory data analysis, split the data into train and test sets, check for stationarity (Augmented Dickey-Fuller Test), remove stationarity (differencing, detrending, deseasoning and or log transformation), build models (AR, MA, ARMA, ARIMA), and forecast.<br><br>
+Time series analysis has a number of components that are somewhat unique to time series data. These are: trend, seasonality, cyclicality, and irregularity. There is also a concept called 'stationarity' which basically means the data is free of the trend, seasonality, etc. The steps for performing time series analysis are first to preprocess the data, perform exploratory data analysis, split the data into train and test sets, check for stationarity (Augmented Dickey-Fuller Test), remove stationarity (differencing, detrending, deseasoning and or log transformation), build models (AR, MA, ARMA, ARIMA), and forecast.<br><br>
 
 After download the John's Hopkins global Covid-19 death count dataset from kaggle (https://www.kaggle.com/datasets/antgoldbloom/covid19-data-from-john-hopkins-university), I began by checking for missing data. 
 
@@ -38,7 +38,7 @@ What is clear from the table above is that the data recorded for some countries 
 ![png](assets/images/tsa_files/covid19_analysis_clean_13_1.png)
     
 
-One important thing to note about the covid 19 data is that not all countries followed the same reporting standards for infections or deaths. Therefor it is important to keep in mind that some countries that may not be in the top 20 in this dataset may have had underinflated death count data. Interestingly, int he correlation heatmap we can see that there are some lighter groups of blocks indicating correlation between the daily death counts between some countries. For example Brazil and India, or Columbia, and Argentina,a nd finally the UK, Italy, Germany, and France. The latter two groups make perfect sense as these countries are geographically, culturally, and economically more closely related. Next, I extracted the US data from the global dataset. The remainder of the analysis will focus just on the US dataset.
+One important thing to note about the covid 19 data is that not all countries followed the same reporting standards for infections or deaths. Therefor it is important to keep in mind that some countries that may not be in the top 20 in this dataset may have had underinflated death count data. Interestingly, in the correlation heatmap we can see that there are some lighter groups of blocks indicating correlation between the daily death counts between some countries. For example Brazil and India, or Columbia, and Argentina,a nd finally the UK, Italy, Germany, and France. The latter two groups make perfect sense as these countries are geographically, culturally, and economically more closely related. Next, I extracted the US data from the global dataset. The remainder of the analysis will focus just on the US dataset.
 
 
 ### US Covid 19 daily death rate analysis
@@ -68,16 +68,7 @@ First, lets take a look at the trend and seasonlity of the training set...
 ![png](assets/images/tsa_files/covid19_analysis_clean_29_0.png)
     
 
-
-    
-![png](assets/images/tsa_files/covid19_analysis_clean_29_2.png)
-    
-
-
-
-    
-![png](assets/images/tsa_files/covid19_analysis_clean_29_3.png)
-    
+There is a clear upward trend, but there is also some unpredictability in still in the trend line. There is also some 'seasonality' to the data, this is likely the affect of when data were collected and released on a weekly basis. Next I perform an augmented Dickey-Fuller (ADF) test after applying a single shift to the data to check for continued non-stationarity. In the adfuller method from the statsmodels package in python, we test the alternative hypothesis (Ha) that the data are stationary, against teh null hypothesis (H0) that the data are stationary. 
 
 
     Dickey-Fuller Test: 
@@ -89,6 +80,9 @@ First, lets take a look at the trend and seasonlity of the training set...
     Critical Value (5%)      -2.871422
     Critical Value (10%)     -2.572035
     dtype: float64
+
+
+According to the ADF test, after shifting the data a single period the p-value is .018 meaning that we reject the null hypothesis, the data are stationary and dont need further differencing or transformation. Next I fit an ARIMA model. ARIMA stands for Auto-Regressive Integrated Moving Average and takes three hyperparameters: lag (p), degree of differencing (d), and the order of the moving average (q). using the auto-arima method from the pmdarima package, first I fit an ARIMA model to the undifferenced training data:
 
 
     Performing stepwise search to minimize aic
@@ -118,75 +112,12 @@ First, lets take a look at the trend and seasonlity of the training set...
     Total fit time: 8.480 seconds
 
 
+The best model according the method's evaluation of AIC is p=5, d=1, q=5. The Root mean squared error of the predictions made with this model are:
+
     RMSE:  2847.6034508083358
 
-
+This is rather high. Finally, I plot the forecast for the daily covid death rate on the testing data:
 
     
 ![png](assets/images/tsa_files/covid19_analysis_clean_32_0.png)
     
-
-
-### Forecasting Covid deaths without Booster
-
-
-    
-![png](assets/images/tsa_files/covid19_analysis_clean_36_0.png)
-    
-
-
-
-    <Figure size 800x400 with 0 Axes>
-
-
-
-    
-![png](assets/images/tsa_files/covid19_analysis_clean_36_2.png)
-    
-
-
-
-    
-![png](assets/images/tsa_files/covid19_analysis_clean_36_3.png)
-    
-
-
-    Dickey-Fuller Test: 
-    Test Statistic           -2.207014
-    p-value                   0.203710
-    Lags Used                14.000000
-    No. of Observations     137.000000
-    Critical Value (1%)      -3.479007
-    Critical Value (5%)      -2.882878
-    Critical Value (10%)     -2.578149
-    dtype: float64
-
-
-    Performing stepwise search to minimize aic
-     ARIMA(2,1,2)(0,0,0)[0] intercept   : AIC=2218.858, Time=0.29 sec
-     ARIMA(0,1,0)(0,0,0)[0] intercept   : AIC=2346.095, Time=0.01 sec
-     ARIMA(1,1,0)(0,0,0)[0] intercept   : AIC=2347.271, Time=0.02 sec
-     ARIMA(0,1,1)(0,0,0)[0] intercept   : AIC=2345.702, Time=0.05 sec
-     ARIMA(0,1,0)(0,0,0)[0]             : AIC=2344.170, Time=0.01 sec
-     ARIMA(1,1,2)(0,0,0)[0] intercept   : AIC=2292.997, Time=0.20 sec
-     ARIMA(2,1,1)(0,0,0)[0] intercept   : AIC=2277.113, Time=0.13 sec
-     ARIMA(3,1,2)(0,0,0)[0] intercept   : AIC=inf, Time=0.26 sec
-     ARIMA(2,1,3)(0,0,0)[0] intercept   : AIC=2222.894, Time=0.31 sec
-     ARIMA(1,1,1)(0,0,0)[0] intercept   : AIC=2316.023, Time=0.11 sec
-     ARIMA(1,1,3)(0,0,0)[0] intercept   : AIC=inf, Time=0.23 sec
-     ARIMA(3,1,1)(0,0,0)[0] intercept   : AIC=2272.479, Time=0.17 sec
-     ARIMA(3,1,3)(0,0,0)[0] intercept   : AIC=2231.633, Time=0.39 sec
-     ARIMA(2,1,2)(0,0,0)[0]             : AIC=2219.060, Time=0.14 sec
-    
-    Best model:  ARIMA(2,1,2)(0,0,0)[0] intercept
-    Total fit time: 2.324 seconds
-
-
-    RMSE:  1468.883292091439
-
-
-
-    
-![png](assets/images/tsa_files/covid19_analysis_clean_39_0.png)
-    
-
