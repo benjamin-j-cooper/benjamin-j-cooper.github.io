@@ -2,6 +2,7 @@
 layout: default
 title: Recommendation System
 description: An exploration of the millions songs dataset using multiple recommendation algorithms 
+image: assets/images/rs_files/recommender_system_129_0.png
 ---
 
 {% include projects/rs_project.md %}

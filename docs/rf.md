@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Classification
-description: This is a Classification problem using Random forest and XGBoost to predict customer satisfaction in the Shinkansen Bullet Train dataset
+description: Classification using Random forest and XGBoost to predict customer satisfaction in the Shinkansen Bullet Train dataset
+image: assets/images/rf_files/BenjaminCooper_HackathonSolution_V02_69_0.png
 ---
 
 {% include projects/rf_project.md %}

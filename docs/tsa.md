@@ -1,7 +1,8 @@
 ---
 layout: default
 title: Time Series Analysis
-description: An exploratory analysis of Covid 19 death and vaccination data
+description: A time series analysis of Covid 19 deaths in the US and abroad
+image: assets/images/tsa_files/covid19_analysis_clean_29_0.png
 ---
 
 {% include projects/tsa_project.md %}
