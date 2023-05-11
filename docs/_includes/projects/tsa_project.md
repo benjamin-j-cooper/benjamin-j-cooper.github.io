@@ -1,5 +1,4 @@
 # Forecasting US deaths per-day from Covid-19
-### What would have happened without the rapid release of the Covid-19 vaccines and boosters?
 
 Time Series are a common task in data science. The possibilities for applying time series analysis to real world situations are endless. Think of all the different aspects of your life or business and the chances are if you think of them in terms of time, or occuring over a period of time, that they could be turned into data and analyzed with a time series analysis. Time series analysis, however can be challenging: making predictings into the future is difficult because no one can exactly predict the future. For one, unforeseen events or events with unpredictable outcomes may occur that could effect the dependent variable we are intersted in predicting. <br><br>
 
@@ -7,7 +6,7 @@ Another way we can look at this is to ask, "what would have happened if X did no
 
 The approach I took was to break the US data into logical segments and analyze each segment independently. For example, the first segment I delineated, spanned the time from the first recorded covid case to the release of the first booster. With the first segment, the training and testing data were split on the date of the realease of the first vaccine. I then forecasted daily death rates for the testing dataset based on the training data (the data before the vaccine was released) so the model would not take into account the impact of the vaccine on death rates. I repeated this process for the booster.<br><br>
 
-Time series analysis has a number of components that are somewhat unique to time series data. These are: trend, seasonality. There is also a concept called 'stationarity' which basically means the data is free of the trend and seasonality. The steps for performing time series analysis are first to preprocess the data, perform exploratory data analysis, split the data into train and test sets, check for stationarity (Augmented Dickey-Fuller Test), remove stationarity (differencing, detrending, deseasoning and or log transformation), build models (AR, MA, ARMA, ARIMA), and forecast.<br><br>
+Time series analysis has a number of components that are somewhat unique to time series data. These are: trend and seasonality. There is also a concept called 'stationarity' which basically means the data is free of the trend and seasonality. The steps for performing time series analysis are first to preprocess the data, perform exploratory data analysis, split the data into train and test sets, check for stationarity (Augmented Dickey-Fuller Test), remove stationarity (differencing, detrending, deseasoning and or log transformation), build models (AR, MA, ARMA, ARIMA), and forecast.<br><br>
 
 After download the John's Hopkins global Covid-19 death count dataset from kaggle (https://www.kaggle.com/datasets/antgoldbloom/covid19-data-from-john-hopkins-university), I began by checking for missing data. 
 
@@ -42,7 +41,7 @@ What is clear from the table above is that the data recorded for some countries 
 One important thing to note about the covid 19 data is that not all countries followed the same reporting standards for infections or deaths. Therefor it is important to keep in mind that some countries that may not be in the top 20 in this dataset may have had underinflated death count data. Interestingly, int he correlation heatmap we can see that there are some lighter groups of blocks indicating correlation between the daily death counts between some countries. For example Brazil and India, or Columbia, and Argentina,a nd finally the UK, Italy, Germany, and France. The latter two groups make perfect sense as these countries are geographically, culturally, and economically more closely related. Next, I extracted the US data from the global dataset. The remainder of the analysis will focus just on the US dataset.
 
 
-### US
+### US Covid 19 daily death rate analysis
 
 
 plotting the cummulative US death counts from the start of the pandemic, we can see there are changes in the death rate over time:
@@ -52,7 +51,7 @@ plotting the cummulative US death counts from the start of the pandemic, we can 
 
 To get a better picture of the these changes in death rate, I transformed the data into non-cumulative data using the built in pandas shift() method to the subtract the previous day from each days death count. 
 
-### US non-cummulative
+### convert US to non-cummulative daily death counts
 
 Here is the resulting non-cumulative data plotted from the start of the pandemic, with significant vaccination developments included as vertical dashed lines:
 
@@ -62,7 +61,7 @@ Here is the resulting non-cumulative data plotted from the start of the pandemic
 
 The vaccination events appear to be correlated with unpredictable drops in the covid death rate. To explore this further, I break the dataset into smaller windows of analysis. The first window is from the start of the pandemic to the release of the 1st booster. The training and testing data are split based on the date of the release of the 1st vaccines. I will then forecast the predicted death rate of the testing dataset with an ARIMA model. 
 
-### Forecasting the predicted covid deaths without first vaccine
+### Forecasting the predicted covid deaths 'hypothetically without first vaccine'
 
 First, lets take a look at the trend and seasonlity of the training set...
     
