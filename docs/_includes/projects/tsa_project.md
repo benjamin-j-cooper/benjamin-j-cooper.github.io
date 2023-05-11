@@ -68,7 +68,7 @@ First, lets take a look at the trend and seasonlity of the training set...
 ![png](assets/images/tsa_files/covid19_analysis_clean_29_0.png)
     
 
-There is a clear upward trend, but there is also some unpredictability in still in the trend line. There is also some 'seasonality' to the data, this is likely the affect of when data were collected and released on a weekly basis. Next I perform an augmented Dickey-Fuller (ADF) test after applying a single shift to the data to check for continued non-stationarity. In the adfuller method from the statsmodels package in python, we test the alternative hypothesis (Ha) that the data are stationary, against teh null hypothesis (H0) that the data are stationary. 
+There is a clear upward trend, but there is also some unpredictability still in the trend line. There is also some 'seasonality' to the data, this is likely the affect of when data were collected and released on a weekly basis. Next I perform an augmented Dickey-Fuller (ADF) test after applying a single shift to the data to check for continued non-stationarity. In the adfuller method from the statsmodels package in python, we test the alternative hypothesis (Ha) that the data are stationary, against teh null hypothesis (H0) that the data are stationary. 
 
 
     Dickey-Fuller Test: 
