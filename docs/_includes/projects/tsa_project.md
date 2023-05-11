@@ -1,7 +1,22 @@
-# Covid 19 Death and Vaccination EDA (Worldwide)
-### 1/22/2020 - 2/15/2023
+# Forecasting US deaths per-day from Covid-19
+### Without the rapid release of the Covid-19 vaccines and boosters
 
-#### Lets take a look at the raw global data tables from Johns's Hopkins (Kaggle)
+Time Series are a common task in data science. The possibilities for applying time series analysis to real world situations are endless. Think of all the different aspects of your life or business and the chances are if you think of them in terms of time, or occuring over a period of time, that they could be turned into data and analyzed with a time series analysis. Time series analysis, however can be challenging: making predictings into the future is difficult becuase no one can exactly predict the future. For one, unforeseen events or events with unpredictable outcomes may ocurr that could effect the dependent variable. Another way we can look at this is to ask, "what would have happened if X did not take place?"<br><br>
+
+One such example of this in the real world involves the novel Covid-19 virus. With the fairly comprehensive ammount of testing and hospital record collection that ocurred  in the United States though the early stages of the pandemic, we have a high quality dataset with which to ask questions about the pandemic in the US and abroad. Here, I perform an exploratory data analysis of the global covid-19 daily death count data, and then conduct a time series analysis on the daily death count data in the US. The goal of the analysis is to forecast daily death counts if the mRNA vaccines and boosters had not been adminnistered.<br><br>
+
+The approach I took was to break the US data into logical segments and analyze each segment independently. For example, the first segment I delineated spanned the time from the first record covid case to the release of the first booster. With the first segment, the training and testing data were split on the date of the realease of the first vaccine. I then forecasted daily death rates for the testing data set based on the data before the vaccine was released so the model would not take into account the impact of the vaccine on death rates. I repeated this process for the booster.<br><br>
+
+Time series trend, seasonality, white noise
+
+models used
+    AR
+    ARMA
+    ARIMA
+
+The metrics I used to evaluate the models 
+    moving average
+    Root mean squared error
 
 
 
@@ -11,170 +26,72 @@
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>Country/Region</th>
-      <th>Province/State</th>
-      <th>Lat</th>
-      <th>Long</th>
-      <th>1/22/20</th>
-      <th>1/23/20</th>
-      <th>1/24/20</th>
-      <th>1/25/20</th>
-      <th>1/26/20</th>
-      <th>1/27/20</th>
-      <th>...</th>
-      <th>2/6/23</th>
-      <th>2/7/23</th>
-      <th>2/8/23</th>
-      <th>2/9/23</th>
-      <th>2/10/23</th>
-      <th>2/11/23</th>
-      <th>2/12/23</th>
-      <th>2/13/23</th>
-      <th>2/14/23</th>
-      <th>2/15/23</th>
+      <th>Total</th>
+      <th>Percent</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
-      <td>Afghanistan</td>
-      <td>NaN</td>
-      <td>33.93911</td>
-      <td>67.709953</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>7896</td>
-      <td>7896</td>
-      <td>7896</td>
-      <td>7896</td>
-      <td>7896</td>
-      <td>7896</td>
-      <td>7896</td>
-      <td>7896</td>
-      <td>7896</td>
-      <td>7896</td>
+      <th>Province/State</th>
+      <td>198</td>
+      <td>0.685121</td>
     </tr>
     <tr>
-      <th>1</th>
-      <td>Albania</td>
-      <td>NaN</td>
-      <td>41.15330</td>
-      <td>20.168300</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>3596</td>
-      <td>3596</td>
-      <td>3596</td>
-      <td>3596</td>
-      <td>3596</td>
-      <td>3596</td>
-      <td>3596</td>
-      <td>3596</td>
-      <td>3596</td>
-      <td>3596</td>
+      <th>Lat</th>
+      <td>2</td>
+      <td>0.006920</td>
     </tr>
     <tr>
-      <th>2</th>
-      <td>Algeria</td>
-      <td>NaN</td>
-      <td>28.03390</td>
-      <td>1.659600</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>6881</td>
-      <td>6881</td>
-      <td>6881</td>
-      <td>6881</td>
-      <td>6881</td>
-      <td>6881</td>
-      <td>6881</td>
-      <td>6881</td>
-      <td>6881</td>
-      <td>6881</td>
+      <th>Long</th>
+      <td>2</td>
+      <td>0.006920</td>
     </tr>
     <tr>
-      <th>3</th>
-      <td>Andorra</td>
-      <td>NaN</td>
-      <td>42.50630</td>
-      <td>1.521800</td>
+      <th>Country/Region</th>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>165</td>
-      <td>165</td>
-      <td>165</td>
-      <td>165</td>
-      <td>165</td>
-      <td>165</td>
-      <td>165</td>
-      <td>165</td>
-      <td>165</td>
-      <td>165</td>
+      <td>0.000000</td>
     </tr>
     <tr>
-      <th>4</th>
-      <td>Angola</td>
-      <td>NaN</td>
-      <td>-11.20270</td>
-      <td>17.873900</td>
+      <th>2/4/22</th>
       <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>...</th>
       <td>...</td>
-      <td>1931</td>
-      <td>1931</td>
-      <td>1931</td>
-      <td>1931</td>
-      <td>1931</td>
-      <td>1931</td>
-      <td>1931</td>
-      <td>1931</td>
-      <td>1931</td>
-      <td>1931</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>2/3/21</th>
+      <td>0</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2/4/21</th>
+      <td>0</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2/5/21</th>
+      <td>0</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2/6/21</th>
+      <td>0</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>2/15/23</th>
+      <td>0</td>
+      <td>0.000000</td>
     </tr>
   </tbody>
 </table>
-<p>5 rows × 1125 columns</p>
+<p>1125 rows × 2 columns</p>
 </div>
 
 
-
-Each column is a country, but we can see by scrolling over that not all of them are countries. for example there is a "winter olympics 2022" column, so some of the columns are well known events. 
-
-    <class 'pandas.core.frame.DataFrame'>
-    RangeIndex: 289 entries, 0 to 288
-    Columns: 1125 entries, Country/Region to 2/15/23
-    dtypes: float64(2), int64(1121), object(2)
-    memory usage: 2.5+ MB
-
-
- - 1124 rows, each row is covid deaths reported for a country.  
- - 1121 of the columns are int64, so the death data is numeric, no need to convert it
-
-### Taking a closer look at the province/state feature:
 
     --------number of single country records, and number of provincial records---------
     False    201
@@ -192,671 +109,174 @@ Each column is a country, but we can see by scrolling over that not all of them 
     United Kingdom    15
     dtype: int64
 
- - So it appears some of the data is in provincial format, some is not
- - lets remove the province/state columns - there is a lot of missing data there
 
 
 
 
-<div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Lat</th>
-      <th>Long</th>
-      <th>1/22/20</th>
-      <th>1/23/20</th>
-      <th>1/24/20</th>
-      <th>1/25/20</th>
-      <th>1/26/20</th>
-      <th>1/27/20</th>
-      <th>1/28/20</th>
-      <th>1/29/20</th>
-      <th>...</th>
-      <th>2/6/23</th>
-      <th>2/7/23</th>
-      <th>2/8/23</th>
-      <th>2/9/23</th>
-      <th>2/10/23</th>
-      <th>2/11/23</th>
-      <th>2/12/23</th>
-      <th>2/13/23</th>
-      <th>2/14/23</th>
-      <th>2/15/23</th>
-    </tr>
-    <tr>
-      <th>Country/Region</th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>Afghanistan</th>
-      <td>33.93911</td>
-      <td>67.709953</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>7896</td>
-      <td>7896</td>
-      <td>7896</td>
-      <td>7896</td>
-      <td>7896</td>
-      <td>7896</td>
-      <td>7896</td>
-      <td>7896</td>
-      <td>7896</td>
-      <td>7896</td>
-    </tr>
-    <tr>
-      <th>Albania</th>
-      <td>41.15330</td>
-      <td>20.168300</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>3596</td>
-      <td>3596</td>
-      <td>3596</td>
-      <td>3596</td>
-      <td>3596</td>
-      <td>3596</td>
-      <td>3596</td>
-      <td>3596</td>
-      <td>3596</td>
-      <td>3596</td>
-    </tr>
-    <tr>
-      <th>Algeria</th>
-      <td>28.03390</td>
-      <td>1.659600</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>6881</td>
-      <td>6881</td>
-      <td>6881</td>
-      <td>6881</td>
-      <td>6881</td>
-      <td>6881</td>
-      <td>6881</td>
-      <td>6881</td>
-      <td>6881</td>
-      <td>6881</td>
-    </tr>
-    <tr>
-      <th>Andorra</th>
-      <td>42.50630</td>
-      <td>1.521800</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>165</td>
-      <td>165</td>
-      <td>165</td>
-      <td>165</td>
-      <td>165</td>
-      <td>165</td>
-      <td>165</td>
-      <td>165</td>
-      <td>165</td>
-      <td>165</td>
-    </tr>
-    <tr>
-      <th>Angola</th>
-      <td>-11.20270</td>
-      <td>17.873900</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>1931</td>
-      <td>1931</td>
-      <td>1931</td>
-      <td>1931</td>
-      <td>1931</td>
-      <td>1931</td>
-      <td>1931</td>
-      <td>1931</td>
-      <td>1931</td>
-      <td>1931</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 1123 columns</p>
-</div>
+    <AxesSubplot: xlabel='Country/Region', ylabel='Country/Region'>
 
 
 
- - If we scroll to the right, we can see that the count is cumulative. to get the deaths per day, we would need to substract day from final day
- - We need to drop that most recent day since we cant calculate a value form the cumulative sum for that day
-
-
-
-
-<div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>1/27/20</th>
-      <th>1/28/20</th>
-      <th>1/29/20</th>
-      <th>1/30/20</th>
-      <th>1/31/20</th>
-      <th>2/1/20</th>
-      <th>2/2/20</th>
-      <th>2/3/20</th>
-      <th>2/4/20</th>
-      <th>2/5/20</th>
-      <th>...</th>
-      <th>2/6/23</th>
-      <th>2/7/23</th>
-      <th>2/8/23</th>
-      <th>2/9/23</th>
-      <th>2/10/23</th>
-      <th>2/11/23</th>
-      <th>2/12/23</th>
-      <th>2/13/23</th>
-      <th>2/14/23</th>
-      <th>2/15/23</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>NaN</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 1116 columns</p>
-</div>
-
-
-
-
-
-
-<div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Country/Region</th>
-      <th>1/27/20</th>
-      <th>1/28/20</th>
-      <th>1/29/20</th>
-      <th>1/30/20</th>
-      <th>1/31/20</th>
-      <th>2/1/20</th>
-      <th>2/2/20</th>
-      <th>2/3/20</th>
-      <th>2/4/20</th>
-      <th>...</th>
-      <th>2/6/23</th>
-      <th>2/7/23</th>
-      <th>2/8/23</th>
-      <th>2/9/23</th>
-      <th>2/10/23</th>
-      <th>2/11/23</th>
-      <th>2/12/23</th>
-      <th>2/13/23</th>
-      <th>2/14/23</th>
-      <th>total_deaths</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Afghanistan</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>7896</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>Albania</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>3596</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>Algeria</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>6881</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>Andorra</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>165</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>Angola</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>...</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>1931</td>
-    </tr>
-  </tbody>
-</table>
-<p>5 rows × 1117 columns</p>
-</div>
-
-
-
- - We can also see there are at least two "events" (the olympics):
-
-
-
-<div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>Country/Region</th>
-      <th>total_deaths</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>76</th>
-      <td>Holy See</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>Antarctica</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>185</th>
-      <td>Tuvalu</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>197</th>
-      <td>Winter Olympics 2022</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>170</th>
-      <td>Summer Olympics 2020</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
- - We will leave them in for now. 
-
-
-### Plotting distribution of death counts per day
 
     
-
-![png](assets/images/tsa_files/Covid19_analysis_35_0.png)
+![png](assets/images/tsa_files/covid19_analysis_clean_13_1.png)
     
 
- - Lets adjsut the number of bins and plot again...
+
+### US
+
 
     
-![png](assets/images/tsa_files/Covid19_analysis_36_0.png)
+![png](assets/images/tsa_files/covid19_analysis_clean_17_0.png)
     
 
-### Plotting total deaths by country for top 10 counties with highest official death counts
+
+### US non- cummulative
 
 
-  
-![png](assets/images/tsa_files/Covid19_analysis_33_0.png)
-    
 
- - lets adjsut this plot, turning it horizontally and coloring the country feature... 
 
-    
-![png](assets/images/tsa_files/Covid19_analysis_37_0.png)
-    
+    <matplotlib.legend.Legend at 0x4b42c5d50>
 
-### Plotting daily deaths for top 10 counties over time
+
+
 
     
-
-![png](assets/images/tsa_files/Covid19_analysis_40_0.png)
+![png](assets/images/tsa_files/covid19_analysis_clean_21_1.png)
     
 
-### Correlation in death rates plotted as a heat map
+
+### Forecasting the predicted covid deaths without first vaccine
+
 
     
-
-![png](assets/images/tsa_files/Covid19_analysis_41_1.png)
+![png](assets/images/tsa_files/covid19_analysis_clean_29_0.png)
     
 
- - Interestingly, we can see there is correlation between some countries in the top 10!
- - Countries in Europe (UK, Italy, Germany, France) are moderately correlated
- - US is moderately correlated with European countries
- - This is very interesting suggests we may want to look deeper into some of these trends we are observing:
- - Are countries with correlated death rates: closer in proximity? On the same continent? Share language? Have trade or diplomatic status? Frequent tourism?
 
-# lets just look at the US data
 
-### Questions to explore: 
- - What is the total number of deaths from covid in the US?
- - What is the Distribution of the daily death counts? 
- - What is the mean and standard deviation of number of daily deaths from covid in the US?
- - What is the trend in deaths in the US from covid like over the duration of the pandemic?
- 
+    <Figure size 800x400 with 0 Axes>
 
 
 
-
-### First lets plot the distribution of deaths in the US:
-
-
-
-![png](assets/images/tsa_files/Covid19_analysis_45_1.png)
-
-
-
-
-<div>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>daily_deaths</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>count</th>
-      <td>1115</td>
-    </tr>
-    <tr>
-      <th>unique</th>
-      <td>851</td>
-    </tr>
-    <tr>
-      <th>top</th>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>freq</th>
-      <td>34</td>
-    </tr>
-  </tbody>
-</table>
-</div>
-
-
-
-
-
-
- - The distribution of daily deaths in the US is right skewed.   
- - Lets check the trend in the US Covid death rate by plotting number of deaths over time
-
-### Plotting daily deaths in US from 1/22/2020 - 2/15/2023
-
- - Important public health events indicated with verticle red dashed lines
- - first line is lock down
- - other lines are releases of vaccines/booster authorizations
     
-![png](assets/images/tsa_files/Covid19_analysis_52_0.png)
+![png](assets/images/tsa_files/covid19_analysis_clean_29_2.png)
     
-## To be continued...
+
+
+
+    
+![png](assets/images/tsa_files/covid19_analysis_clean_29_3.png)
+    
+
+
+    Dickey-Fuller Test: 
+    Test Statistic           -3.232943
+    p-value                   0.018155
+    Lags Used                13.000000
+    No. of Observations     294.000000
+    Critical Value (1%)      -3.452790
+    Critical Value (5%)      -2.871422
+    Critical Value (10%)     -2.572035
+    dtype: float64
+
+
+    Performing stepwise search to minimize aic
+     ARIMA(2,1,2)(0,0,0)[0] intercept   : AIC=4823.159, Time=0.43 sec
+     ARIMA(0,1,0)(0,0,0)[0] intercept   : AIC=5005.576, Time=0.01 sec
+     ARIMA(1,1,0)(0,0,0)[0] intercept   : AIC=5003.219, Time=0.02 sec
+     ARIMA(0,1,1)(0,0,0)[0] intercept   : AIC=4996.994, Time=0.07 sec
+     ARIMA(0,1,0)(0,0,0)[0]             : AIC=5003.693, Time=0.01 sec
+     ARIMA(1,1,2)(0,0,0)[0] intercept   : AIC=4921.755, Time=0.29 sec
+     ARIMA(2,1,1)(0,0,0)[0] intercept   : AIC=4893.048, Time=0.19 sec
+     ARIMA(3,1,2)(0,0,0)[0] intercept   : AIC=inf, Time=0.38 sec
+     ARIMA(2,1,3)(0,0,0)[0] intercept   : AIC=4801.726, Time=0.42 sec
+     ARIMA(1,1,3)(0,0,0)[0] intercept   : AIC=4910.872, Time=0.33 sec
+     ARIMA(3,1,3)(0,0,0)[0] intercept   : AIC=4825.775, Time=0.46 sec
+     ARIMA(2,1,4)(0,0,0)[0] intercept   : AIC=4803.279, Time=0.51 sec
+     ARIMA(1,1,4)(0,0,0)[0] intercept   : AIC=4865.388, Time=0.40 sec
+     ARIMA(3,1,4)(0,0,0)[0] intercept   : AIC=4799.294, Time=0.50 sec
+     ARIMA(4,1,4)(0,0,0)[0] intercept   : AIC=4686.396, Time=0.60 sec
+     ARIMA(4,1,3)(0,0,0)[0] intercept   : AIC=4741.888, Time=0.49 sec
+     ARIMA(5,1,4)(0,0,0)[0] intercept   : AIC=4662.236, Time=0.63 sec
+     ARIMA(5,1,3)(0,0,0)[0] intercept   : AIC=4716.051, Time=0.61 sec
+     ARIMA(5,1,5)(0,0,0)[0] intercept   : AIC=4660.664, Time=0.79 sec
+     ARIMA(4,1,5)(0,0,0)[0] intercept   : AIC=4660.880, Time=0.74 sec
+     ARIMA(5,1,5)(0,0,0)[0]             : AIC=4662.059, Time=0.57 sec
+    
+    Best model:  ARIMA(5,1,5)(0,0,0)[0] intercept
+    Total fit time: 8.480 seconds
+
+
+    RMSE:  2847.6034508083358
+
+
+
+    
+![png](assets/images/tsa_files/covid19_analysis_clean_32_0.png)
+    
+
+
+### Forecasting Covid deaths without Booster
+
+
+    
+![png](assets/images/tsa_files/covid19_analysis_clean_36_0.png)
+    
+
+
+
+    <Figure size 800x400 with 0 Axes>
+
+
+
+    
+![png](assets/images/tsa_files/covid19_analysis_clean_36_2.png)
+    
+
+
+
+    
+![png](assets/images/tsa_files/covid19_analysis_clean_36_3.png)
+    
+
+
+    Dickey-Fuller Test: 
+    Test Statistic           -2.207014
+    p-value                   0.203710
+    Lags Used                14.000000
+    No. of Observations     137.000000
+    Critical Value (1%)      -3.479007
+    Critical Value (5%)      -2.882878
+    Critical Value (10%)     -2.578149
+    dtype: float64
+
+
+    Performing stepwise search to minimize aic
+     ARIMA(2,1,2)(0,0,0)[0] intercept   : AIC=2218.858, Time=0.29 sec
+     ARIMA(0,1,0)(0,0,0)[0] intercept   : AIC=2346.095, Time=0.01 sec
+     ARIMA(1,1,0)(0,0,0)[0] intercept   : AIC=2347.271, Time=0.02 sec
+     ARIMA(0,1,1)(0,0,0)[0] intercept   : AIC=2345.702, Time=0.05 sec
+     ARIMA(0,1,0)(0,0,0)[0]             : AIC=2344.170, Time=0.01 sec
+     ARIMA(1,1,2)(0,0,0)[0] intercept   : AIC=2292.997, Time=0.20 sec
+     ARIMA(2,1,1)(0,0,0)[0] intercept   : AIC=2277.113, Time=0.13 sec
+     ARIMA(3,1,2)(0,0,0)[0] intercept   : AIC=inf, Time=0.26 sec
+     ARIMA(2,1,3)(0,0,0)[0] intercept   : AIC=2222.894, Time=0.31 sec
+     ARIMA(1,1,1)(0,0,0)[0] intercept   : AIC=2316.023, Time=0.11 sec
+     ARIMA(1,1,3)(0,0,0)[0] intercept   : AIC=inf, Time=0.23 sec
+     ARIMA(3,1,1)(0,0,0)[0] intercept   : AIC=2272.479, Time=0.17 sec
+     ARIMA(3,1,3)(0,0,0)[0] intercept   : AIC=2231.633, Time=0.39 sec
+     ARIMA(2,1,2)(0,0,0)[0]             : AIC=2219.060, Time=0.14 sec
+    
+    Best model:  ARIMA(2,1,2)(0,0,0)[0] intercept
+    Total fit time: 2.324 seconds
+
+
+    RMSE:  1468.883292091439
+
+
+
+    
+![png](assets/images/tsa_files/covid19_analysis_clean_39_0.png)
+    
+
