@@ -116,7 +116,7 @@ The best model according the method's evaluation of AIC is p=5, d=1, q=5. The Ro
 
     RMSE:  2847.6034508083358
 
-This is rather high. Finally, I plot the forecast for the daily covid death rate on the testing data:
+This is rather high, and likely do to the 'seasonal' fluctuations the model is predicting that mimic the pattern with which hospitals released data. Finally, I plot the forecast for the daily covid death rate on the testing data:
 
     
 ![png](assets/images/tsa_files/covid19_analysis_clean_32_0.png)
