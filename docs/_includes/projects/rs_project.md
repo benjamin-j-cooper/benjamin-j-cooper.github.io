@@ -1,15 +1,15 @@
 # Executive Summary
 
 ### *Problem Summary*
-<font size="4">        With the advent of smartphones and the consumer economy, there has been a revolution in the ways that people consume products and content. At the same time, digital music and digital music distribution platforms have become some of the most widely accessible and highly consumed product markets in the world. Yet with this deluge of digital music content comes a challenge: how do users find new content that they enjoy, and how do digital music platforms enable music discovery by users? These challenges are exacerbated by the fact that in the modern fast-paced world, people are often time or attention limited, there are other platforms competing for user attention, and digital content-based company's revenue often relies on the time consumers spend on, or interact with, its platform. These companies need to be able to figure out what kind of content is needed in order to increase customer time spent on their platform, the ammount of interaction had with their platform, and the overall satisfaction with a users experience on the platform. The key challenge for companies is in figuring out what kind of content their users are most likely to consume. Spotify is one such music content provider with a huge market base across the world. With the ever-increasing volume of streaming music becoming available, finding new music of interest has become a tedious task in and of itself. Spotify has grown significantly in the market because of its ability to make highly personalized music recommendations to each and every user of its platform based on a huge preference database gathered over time - millions of customers and billions of songs. This is done by using smart recommendation systems that can recommend songs based on users’ likes/dislikes, incorporating both content-based and latent features for song recommendations. However, the recommendation system used by Spotify and its hyperparameter settings have remained a proprietary, closely-guarded secret. Here, I build a recommendation system to provide a top 10 of personalized song recommendations to a user that the user is most likely to enjoy/like/interact-with based on that users personal musical preferences. 
+<font size="4">        With the advent of smartphones and the consumer economy, there has been a revolution in the ways that people consume products and content. At the same time, digital music and digital music distribution platforms have become some of the most widely accessible and highly consumed product markets in the world. Yet with this deluge of digital music content comes a challenge: how do users find new content that they enjoy, and how do digital music platforms enable music discovery by users? These challenges are exacerbated by the fact that in the modern fast-paced world, people are often time or attention limited, there are other platforms competing for user attention, and digital content-based company's revenue often relies on the time consumers spend on, or interact with, its platform. These companies need to be able to figure out what kind of content is needed to increase customer time spent on their platform, the amount of interaction had with their platform, and the overall satisfaction with a user’s experience on the platform. The key challenge for companies is in figuring out what kind of content their users are most likely to consume. Spotify is one such music content provider with a huge market base across the world. With the ever-increasing volume of streaming music becoming available, finding new music of interest has become a tedious task in and of itself. Spotify has grown significantly in the market because of its ability to make highly personalized music recommendations to every user of its’ platform based on a huge preference database gathered over time - millions of customers and billions of songs. This is done by using smart recommendation systems that can recommend songs based on users’ likes/dislikes, incorporating both content-based and latent features for song recommendations. However, the recommendation system used by Spotify and its hyperparameter settings have remained a proprietary, closely guarded secret. Here, I build a recommendation system to provide a top 10 of personalized song recommendations to a user that the user is most likely to enjoy/like/interact-with based on that users’ personal musical preferences.
 </font>
 
 ### *Solution Summary*
-<font size="4">       In total, I explored six recommendation systems using the 1 millions songs dataset<sup>1</sup> as part of the solution design for this project: popularity-based, user-user collaborative filtering, item-item collaborative filtering, matrix factorization, cluster-based, and content-based. To evaluate the different models analyzed here, I relied on the F1_score, model predictions of user/song interactions, and the top 10 recommended songs by each model. These metrics clearly demonstrate a higher level of performance by three of the six models: matrix factorization (Singular Value Decomposition with default settings, with a 70% weight applied), user-user collaborative filtering (KNN basic algorithm with msd distance, max cluster size of 50, minimum cluster size of 9, and 30% weight applied), and the content-based model (tf-idf encoding and cosign-similarity distance on album title, artist name, and release year). Therefore,  I propose a Hybrid-Based Recommendation System, built by combining these three models with the specified hyperparameters, be adopted for personalized recommendations of music with maximum user interaction potential. The proposed hybrid recommendation system boasts fast computational times, high prediction accuracy of user preferences, and a balanced recommendation of familiar and diverse new music for users. However, the model is subject to limitations such as a 'cold start' problem when making predictions for new users with few listens, and with the ever-increasing volume of songs becoming available and users adopting the platform this will lead to longer and longer computation times (and presumably less user satisfaction). Addtionally, the model generally favors popular artists and songs, which could have an impact on the music industry by making it more difficult for new artists to break into the scene using this platform.<br>
-       Importantly, to reduce the computational resources required to test, train, and evaluate the solution design for this project, it was necessary to reduce the size of the dataset to make it more computationally tractable. The resulting filtered dataset reduced the original '1 million  songs' dataset (with 2 million records) to 121,900 records and increased the accuracy of predicted user interactions by reducing high degree of imbalance in the data from infrequent users and unpopular songs. While these results do not address the 'cold start' issue, they deomstrate the importance of a filtering step for making fast and relevant recommendations. Therefore, I suggest the application of a pre-recommendation filter as part of a production design. Additionally, the content-based part of the recommendation system could also be improved by incorporating further features such as genre, lyrics, danceability, and encoded recordings. With these additions to the content portion of the recommendation system, the weight of the content-based model in the final hybrid recommendation system might be increased in future versions of the product. I recommend that these limitations and proposals be considered in future releases of the recommendation system for improved user personalization and increased user satisfaction.
+<font size="4">       In total, I explored six recommendation systems using the 1 million songs dataset<sup>1</sup> as part of the solution design for this project: popularity-based, user-user collaborative filtering, item-item collaborative filtering, matrix factorization, cluster-based, and content-based. To evaluate the different models analyzed here, I relied on the F1_score, model predictions of user/song interactions, and the top 10 recommended songs by each model. These metrics clearly demonstrate a higher level of performance by three of the six models: matrix factorization (Singular Value Decomposition with default settings, with a 70% weight applied), user-user collaborative filtering (KNN basic algorithm with msd distance, max cluster size of 50, minimum cluster size of 9, and 30% weight applied), and the content-based model (tf-idf encoding and cosign-similarity distance on album title, artist name, and release year). Therefore, I propose a Hybrid-Based Recommendation System, built by combining these three models with the specified hyperparameters, be adopted for personalized recommendations of music with maximum user interaction potential. The proposed hybrid recommendation system boasts fast computational times, high prediction accuracy of user preferences, and a balanced recommendation of familiar and diverse new music for users. However, the model is subject to limitations such as a 'cold start' problem when making predictions for new users with few listens, and with the ever-increasing volume of songs becoming available and users adopting the platform this will lead to longer and longer computation times (and presumably less user satisfaction). Additionally, the model generally favors popular artists and songs, which could have an impact on the music industry by making it more difficult for new artists to break into the scene using this platform.<br>
+       Importantly, to reduce the computational resources required to test, train, and evaluate the solution design for this project, it was necessary to reduce the size of the dataset to make it more computationally tractable. The resulting filtered dataset reduced the original '1 million songs' dataset (with 2 million records) to 121,900 records and increased the accuracy of predicted user interactions by reducing high degree of imbalance in the data from infrequent users and unpopular songs. While these results do not address the 'cold start' issue, they demonstrate the importance of a filtering step for making fast and relevant recommendations. Therefore, I suggest the application of a pre-recommendation filter as part of a production design. Additionally, the content-based part of the recommendation system could also be improved by incorporating further features such as genre, lyrics, danceability, and encoded recordings. With these additions to the content portion of the recommendation system, the weight of the content-based model in the final hybrid recommendation system might be increased in future versions of the product. I recommend that these limitations and proposals be considered in future releases of the recommendation system for improved user personalization and increased user satisfaction.
 </font> 
 ==> NOTE <== <br>
-For the full code check out the Github Link at the bottom of the page
+For the full code check out the GitHub Link at the bottom of the page
 
 ### **The objective:**
 
@@ -32,7 +32,7 @@ The core data is the Taste Profile Subset released by the Echo Nest as part of t
 ## **Data Source**
 http://millionsongdataset.com/ (1)
 
-The dataset is split into two .csv files I load here. The two dataframes and there features are:
+The dataset is split into two .csv files I load here. The two dataframes and their features are:
 
 __song_data__
 
@@ -45,22 +45,6 @@ __song_data__
 - Artist_name - Name of the artist 
 
 - year - Year of release
-
-
-
-<class 'pandas.core.frame.DataFrame'>
-  RangeIndex: 2000000 entries, 0 to 1999999
-  Data columns (total 3 columns):
-    #   Column      Dtype 
-  ---  ------      ----- 
-    0   user_id     object
-    1   song_id     object
-    2   play_count  int64 
-  dtypes: int64(1), object(2)
-  memory usage: 45.8+ MB
-
-
-
 
 <div>
 <table border="1" class="dataframe">
@@ -148,23 +132,6 @@ __count_data__
 - song_id - A unique id given to the song
 
 - play_count - Number of times the song was played
-
-
-
-<class 'pandas.core.frame.DataFrame'>
-  RangeIndex: 1000000 entries, 0 to 999999
-  Data columns (total 5 columns):
-    #   Column       Non-Null Count    Dtype 
-  ---  ------       --------------    ----- 
-    0   song_id      1000000 non-null  object
-    1   title        999985 non-null   object
-    2   release      999995 non-null   object
-    3   artist_name  1000000 non-null  object
-    4   year         1000000 non-null  int64 
-  dtypes: int64(1), object(4)
-  memory usage: 38.1+ MB
-
-
 
 <div>
 <table border="1" class="dataframe">
@@ -294,42 +261,138 @@ From this distribution plot, we can see that the number of songs played by each 
 ![png](assets/images/rs_files/recommender_system_26_1.png)
     
 
-
-<class 'pandas.core.frame.DataFrame'>
-  RangeIndex: 1224498 entries, 0 to 1224497
-  Data columns (total 7 columns):
-    #   Column       Non-Null Count    Dtype 
-  ---  ------       --------------    ----- 
-    0   user_id      1224498 non-null  object
-    1   song_id      1224498 non-null  object
-    2   title        1224498 non-null  object
-    3   release      1224498 non-null  object
-    4   artist_name  1224498 non-null  object
-    5   year         1224498 non-null  int64 
-    6   play_count   1224498 non-null  int64 
-  dtypes: int64(2), object(5)
-  memory usage: 65.4+ MB
-
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Column</th>
+      <th>Non-Null</th>
+      <th>Count</th>
+      <th>Dtype</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>user_id</td>
+      <td>1224498</td>
+      <td>non-null </td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>song_id</td>
+      <td>1224498</td>
+      <td>non-null </td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>title</td>
+      <td>1224498</td>
+      <td>non-null </td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>release</td>
+      <td>1224498</td>
+      <td>non-null </td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>artist_name</td>
+      <td>1224498</td>
+      <td>non-null </td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>year</td>
+      <td>1224498</td>
+      <td>non-null </td>
+      <td>int64</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>play_count</td>
+      <<td>1224498</td>
+      <td>non-null </td>
+      <td>int64</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 Filtering out less active users has decreased the imbalance somewhat. The distribution is still heavily right skewed in the above plot, but the class imbalance has been reduced by a factor of 5 (y limit is 1200 instead of 7000). This has also decreased the size of the dataset to 1.2 million records down from 2 million. <br><br>
 This is still not good enough, so I continue to decrease the sparcity and imbalance of the data by filtering out any user/song records that have a play count less than 6. There are many more songs that users have only listened to 1 or a few times. I want to recommend highly rated songs, so I am going to get rid of these songs with low interactions and assume they are uninteracted with 'not-liked'. 
 
-
-<class 'pandas.core.frame.DataFrame'>
-  RangeIndex: 185694 entries, 0 to 185693
-  Data columns (total 7 columns):
-    #   Column       Non-Null Count   Dtype 
-  ---  ------       --------------   ----- 
-    0   user_id      185694 non-null  object
-    1   song_id      185694 non-null  object
-    2   title        185694 non-null  object
-    3   release      185694 non-null  object
-    4   artist_name  185694 non-null  object
-    5   year         185694 non-null  int64 
-    6   play_count   185694 non-null  int64 
-  dtypes: int64(2), object(5)
-  memory usage: 9.9+ MB
-
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Column</th>
+      <th>Non-Null</th>
+      <th>Count</th>
+      <th>Dtype</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>user_id</td>
+      <td>185694</td>
+      <td>non-null </td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>song_id</td>
+      <td>185694</td>
+      <td>non-null </td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>title</td>
+      <td>185694</td>
+      <td>non-null </td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>release</td>
+      <td>185694</td>
+      <td>non-null </td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>artist_name</td>
+      <td>185694</td>
+      <td>non-null </td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>year</td>
+      <td>185694</td>
+      <td>non-null </td>
+      <td>int64</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>play_count</td>
+      <<td>185694</td>
+      <td>non-null </td>
+      <td>int64</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 This last filtering step dramatically reduced the size of the dataset by 85%, this will speed up processing times for the models and also make the predictions more accurate by reducing the class imbalance. Finally, I filter out all songs that have less than 20 user interactions:
 
@@ -338,22 +401,70 @@ This last filtering step dramatically reduced the size of the dataset by 85%, th
 ![png](assets/images/rs_files/recommender_system_34_1.png)
     
 
-
-<class 'pandas.core.frame.DataFrame'>
-  RangeIndex: 124147 entries, 0 to 124146
-  Data columns (total 7 columns):
-    #   Column       Non-Null Count   Dtype 
-  ---  ------       --------------   ----- 
-    0   user_id      124147 non-null  object
-    1   song_id      124147 non-null  object
-    2   title        124147 non-null  object
-    3   release      124147 non-null  object
-    4   artist_name  124147 non-null  object
-    5   year         124147 non-null  int64 
-    6   play_count   124147 non-null  int64 
-  dtypes: int64(2), object(5)
-  memory usage: 6.6+ MB
-
+<div>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Column</th>
+      <th>Non-Null</th>
+      <th>Count</th>
+      <th>Dtype</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>user_id</td>
+      <td>124147</td>
+      <td>non-null </td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>song_id</td>
+      <td>124147</td>
+      <td>non-null </td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>title</td>
+      <td>124147</td>
+      <td>non-null </td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>release</td>
+      <td>124147</td>
+      <td>non-null </td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>artist_name</td>
+      <td>124147</td>
+      <td>non-null </td>
+      <td>object</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>year</td>
+      <td>124147</td>
+      <td>non-null </td>
+      <td>int64</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>play_count</td>
+      <<td>124147</td>
+      <td>non-null </td>
+      <td>int64</td>
+    </tr>
+  </tbody>
+</table>
+</div>
 
 With these filtering steps, I have reduced the class imbalance, decreased the size of the dataset to make models and gridsearch more tracteable, and I have decreased the extreme sparcity of our resulting recommendations matrices. Now I am going to apply a threshhold limit to further reduce class imblance and the play_count range, and then apply a min max scalar to standardize the play_counts so I can effectively use them as a proxy for a 1-10 rating.
 
